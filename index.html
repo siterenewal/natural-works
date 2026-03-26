@@ -1,0 +1,2388 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ナチュラルワークス | 自然素材の注文住宅</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Noto+Sans+JP:wght@300;400;500;600&family=Noto+Serif+JP:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing Script&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=EB+Garamond:wght@400;500&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    
+    <style>
+    /* ========================================
+       New Home Design Ver.4.0
+       白ベース＋薄い木目調の上品なデザイン
+       CONTACT CTA統合版
+       ======================================== */
+    
+    :root {
+        --nh-color-text: #3a3a3a;
+        --nh-color-text-light: #6b6b6b;
+        --nh-color-sub: #888888;
+        --nh-color-bg: #fafaf8;
+        --nh-color-bg-warm: #f7f5f2;
+        --nh-color-bg-section: #f5f3f0;
+        --nh-color-bg-gray: #f8f8f6;
+        --nh-color-accent: #8b7355;
+        --nh-color-accent-light: #a89070;
+        --nh-color-accent-dark: #6b5a45;
+        --nh-color-wood: #c4b49a;
+        --nh-color-wood-light: #d9cdb8;
+        --nh-color-wood-pale: #e8e0d4;
+        --nh-color-border: #e5e0d8;
+        --nh-color-white: #ffffff;
+        --nh-font-en: 'Cormorant Garamond', serif;
+        --nh-font-jp: 'Noto Sans JP', sans-serif;
+        --nh-font-jp-serif: 'Noto Serif JP', serif;
+        --nh-shadow-soft: 0 2px 15px rgba(0,0,0,0.05);
+        --nh-shadow-hover: 0 8px 30px rgba(0,0,0,0.1);
+    }
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+        font-family: var(--nh-font-jp-serif);
+        color: var(--nh-color-text);
+        background: var(--nh-color-bg);
+        line-height: 1.8;
+        -webkit-font-smoothing: antialiased;
+    }
+    
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
+    
+    .nh-container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+    
+    .nh-pc-only { display: block; }
+    .nh-sp-only { display: none; }
+    
+    @media (max-width: 768px) {
+        .nh-pc-only { display: none !important; }
+        .nh-sp-only { display: block !important; }
+        .nh-container { padding: 0 20px; }
+    }
+    
+    /* ========== ヘッダー ========== */
+    .site-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        background: rgba(255,255,255,0.95);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--nh-color-border);
+        padding: 15px 40px;
+    }
+    .site-header .header-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+    .site-header .logo {
+        font-family: var(--nh-font-en);
+        font-size: 1.5rem;
+        font-weight: 400;
+        letter-spacing: 0.1em;
+        color: var(--nh-color-text);
+    }
+    .site-header nav ul {
+        display: flex;
+        gap: 30px;
+        list-style: none;
+    }
+    .site-header nav a {
+        font-size: 0.85rem;
+        letter-spacing: 0.05em;
+        color: var(--nh-color-text-light);
+    }
+    .site-header nav a:hover {
+        color: var(--nh-color-accent);
+    }
+    .site-header .header-contact {
+        background: var(--nh-color-text);
+        color: #fff;
+        padding: 10px 25px;
+        font-size: 0.85rem;
+        letter-spacing: 0.05em;
+        transition: all 0.3s;
+    }
+    .site-header .header-contact:hover {
+        background: var(--nh-color-accent);
+    }
+    
+    @media (max-width: 768px) {
+        .site-header { padding: 12px 20px; }
+        .site-header nav { display: none; }
+    }
+    
+    /* ========== FVセクション（Swiper） ========== */
+    .page-top .fv-sec {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        min-height: 600px;
+        overflow: hidden;
+    }
+    .page-top .top-swiper {
+        width: 100%;
+        height: 100%;
+    }
+    .page-top .top-swiper .swiper-slide {
+        width: 100%;
+        height: 100%;
+    }
+    .page-top .top-swiper .swiper-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .page-top .swiper-pagination {
+        bottom: 80px !important;
+    }
+    .page-top .swiper-pagination-bullet {
+        width: 10px;
+        height: 10px;
+        background: #fff;
+        opacity: 0.5;
+        margin: 0 8px;
+        transition: 0.3s;
+    }
+    .page-top .swiper-pagination-bullet-active {
+        opacity: 1;
+        background: var(--nh-color-wood);
+        transform: scale(1.2);
+    }
+    .page-top .catch {
+        position: absolute;
+        bottom: 15%;
+        left: 5%;
+        color: #fff;
+        font-size: 3.5rem;
+        font-weight: 500;
+        line-height: 1.6;
+        text-shadow: 0 2px 30px rgba(0,0,0,0.5);
+        z-index: 10;
+        margin: 0;
+    }
+    .page-top .scroll {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: var(--nh-font-en);
+        font-size: 0.75rem;
+        letter-spacing: 0.2em;
+        color: #fff;
+        z-index: 10;
+    }
+    .page-top .scroll::after {
+        content: '';
+        position: absolute;
+        bottom: -40px;
+        left: 50%;
+        width: 1px;
+        height: 30px;
+        background: #fff;
+        animation: scrollLine 1.5s ease-in-out infinite;
+    }
+    @keyframes scrollLine {
+        0% { transform: scaleY(0); transform-origin: top; }
+        50% { transform: scaleY(1); transform-origin: top; }
+        51% { transform-origin: bottom; }
+        100% { transform: scaleY(0); transform-origin: bottom; }
+    }
+    
+    @media (max-width: 768px) {
+        .page-top .catch { font-size: 2rem; bottom: 20%; left: 20px; }
+    }
+    
+    /* ========== イベントセクション（メイン＋過去） ========== */
+.page-top .nh-event-section {
+    background: linear-gradient(180deg, #f5efe8 0%, #faf8f5 100%);
+    padding: 80px 0;
+}
+
+.page-top .nh-event-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.page-top .nh-event-title {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+}
+
+.page-top .nh-event-en {
+    font-family: var(--nh-font-en);
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    color: var(--nh-color-accent);
+}
+
+.page-top .nh-event-jp {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--nh-color-text);
+    margin: 0;
+}
+
+.page-top .nh-event-btn {
+    font-size: 0.85rem;
+    color: var(--nh-color-accent);
+    border: 1px solid var(--nh-color-accent);
+    padding: 10px 30px;
+    transition: all 0.3s;
+}
+
+.page-top .nh-event-btn:hover {
+    background: var(--nh-color-accent);
+    color: #fff;
+}
+
+/* メインイベント */
+.page-top .nh-event-main {
+    margin-bottom: 50px;
+}
+
+.page-top .nh-event-main-link {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    transition: all 0.4s ease;
+}
+
+.page-top .nh-event-main-link:hover {
+    box-shadow: 0 15px 50px rgba(0,0,0,0.12);
+    transform: translateY(-3px);
+}
+
+.page-top .nh-event-main-img {
+    position: relative;
+    overflow: hidden;
+}
+
+.page-top .nh-event-main-img img {
+    width: 100%;
+    height: 100%;
+    min-height: 320px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.page-top .nh-event-main-link:hover .nh-event-main-img img {
+    transform: scale(1.05);
+}
+
+.page-top .nh-event-main-badge {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: var(--nh-color-accent);
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 8px 20px;
+    border-radius: 30px;
+    letter-spacing: 0.1em;
+}
+
+.page-top .nh-event-main-content {
+    padding: 50px 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.page-top .nh-event-main-meta {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.page-top .nh-event-main-date {
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+    font-family: var(--nh-font-en);
+    color: var(--nh-color-text);
+}
+
+.page-top .nh-event-main-date-month {
+    font-size: 2.5rem;
+    font-weight: 400;
+    line-height: 1;
+}
+
+.page-top .nh-event-main-date-sep {
+    font-size: 1.5rem;
+    margin: 0 2px;
+}
+
+.page-top .nh-event-main-date-day {
+    font-size: 2.5rem;
+    font-weight: 400;
+    line-height: 1;
+}
+
+.page-top .nh-event-main-date-week {
+    font-size: 0.9rem;
+    margin-left: 8px;
+    color: var(--nh-color-sub);
+}
+
+.page-top .nh-event-main-date-range {
+    font-size: 1.2rem;
+    margin-left: 5px;
+    color: var(--nh-color-text-light);
+}
+
+.page-top .nh-event-main-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    padding: 5px 12px;
+    background: var(--nh-color-wood-pale);
+    color: var(--nh-color-accent-dark);
+    border-radius: 3px;
+}
+
+.page-top .nh-event-main-name {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin: 0 0 15px;
+    line-height: 1.5;
+    color: var(--nh-color-text);
+}
+
+.page-top .nh-event-main-desc {
+    font-size: 0.95rem;
+    line-height: 1.9;
+    color: var(--nh-color-text-light);
+    margin: 0 0 25px;
+}
+
+.page-top .nh-event-main-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: var(--nh-color-accent);
+    transition: gap 0.3s ease;
+}
+
+.page-top .nh-event-main-link:hover .nh-event-main-more {
+    gap: 15px;
+}
+
+.page-top .nh-event-main-more .arrow {
+    display: inline-block;
+    width: 25px;
+    height: 1px;
+    background: var(--nh-color-accent);
+    position: relative;
+}
+
+.page-top .nh-event-main-more .arrow::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: -4px;
+    width: 8px;
+    height: 8px;
+    border-top: 1px solid var(--nh-color-accent);
+    border-right: 1px solid var(--nh-color-accent);
+    transform: rotate(45deg);
+}
+
+/* ========== 過去のイベント（写真付きカード3枚・コンパクト版） ========== */
+.page-top .nh-event-past {
+    margin-top: 50px;
+}
+
+.page-top .nh-event-past-label {
+    font-size: 0.85rem;
+    color: var(--nh-color-sub);
+    margin: 0 0 15px;
+    letter-spacing: 0.1em;
+}
+
+/* カードとボタンを横並び */
+.page-top .nh-event-past-row {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.page-top .nh-event-past-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 700px;
+}
+
+.page-top .nh-event-past-item {
+    background: #fff;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    transition: all 0.3s ease;
+}
+
+.page-top .nh-event-past-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.page-top .nh-event-past-item a {
+    display: block;
+    text-decoration: none;
+    color: var(--nh-color-text);
+}
+
+.page-top .nh-event-past-img {
+    overflow: hidden;
+}
+
+.page-top .nh-event-past-img img {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.page-top .nh-event-past-item:hover .nh-event-past-img img {
+    transform: scale(1.05);
+}
+
+.page-top .nh-event-past-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 12px 6px;
+}
+
+.page-top .nh-event-past-date {
+    font-family: var(--nh-font-en);
+    font-size: 0.7rem;
+    color: var(--nh-color-sub);
+    letter-spacing: 0.02em;
+}
+
+.page-top .nh-event-past-tag {
+    font-size: 0.6rem;
+    padding: 2px 8px;
+    background: var(--nh-color-bg-section);
+    color: var(--nh-color-text-light);
+    border-radius: 2px;
+}
+
+.page-top .nh-event-past-name {
+    font-size: 0.8rem;
+    font-weight: 500;
+    line-height: 1.4;
+    padding: 0 12px 12px;
+    margin: 0;
+    color: var(--nh-color-text);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* ボタン（元のスタイル維持） */
+.page-top .nh-event-btn {
+    font-size: 0.85rem;
+    color: var(--nh-color-accent);
+    border: 1px solid var(--nh-color-accent);
+    padding: 10px 30px;
+    transition: all 0.3s;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.page-top .nh-event-btn:hover {
+    background: var(--nh-color-accent);
+    color: #fff;
+}
+
+/* レスポンシブ */
+@media (max-width: 960px) {
+    .page-top .nh-event-past-row {
+        gap: 20px;
+    }
+    
+    .page-top .nh-event-past-list {
+        max-width: 100%;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-top .nh-event-past {
+        margin-top: 30px;
+    }
+    
+    .page-top .nh-event-past-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .page-top .nh-event-past-list {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+    
+    .page-top .nh-event-past-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+        padding: 8px 10px 5px;
+    }
+    
+    .page-top .nh-event-past-tag {
+        display: none;
+    }
+    
+    .page-top .nh-event-past-name {
+        font-size: 0.7rem;
+        padding: 0 10px 10px;
+        -webkit-line-clamp: 2;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-top .nh-event-past-list {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+    }
+    
+    .page-top .nh-event-past-date {
+        font-size: 0.6rem;
+    }
+    
+    .page-top .nh-event-past-name {
+        font-size: 0.65rem;
+        padding: 0 8px 8px;
+    }
+    
+    .page-top .nh-event-past-info {
+        padding: 6px 8px 4px;
+    }
+}
+
+
+
+   
+    /* ========== イントロメッセージ ========== */
+    .page-top .nh-intro-message {
+        padding: 100px 20px;
+        text-align: center;
+        background: var(--nh-color-bg);
+    }
+    .page-top .nh-intro-message p {
+        font-family: var(--nh-font-jp-serif);
+        font-size: 1.3rem;
+        line-height: 2.4;
+        color: var(--nh-color-text);
+        letter-spacing: 0.08em;
+    }
+    
+    @media (max-width: 768px) {
+        .page-top .nh-intro-message { padding: 60px 20px; }
+        .page-top .nh-intro-message p { font-size: 1rem; line-height: 2.2; }
+    }
+
+    
+    /* ========== コンセプトセクション（背景画像版） ========== */
+.page-top .nh-concept-section {
+    position: relative;
+    padding: 150px 0;
+    overflow: hidden;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    background-image: url('https://www.natural-space.jp/wp-content/themes/fast-mirai/img/top/concept-img-1-02.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* オーバーレイ */
+.page-top .nh-concept-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.92) 0%,
+        rgba(255,255,255,0.80) 50%,
+        rgba(255,255,255,0.65) 100%
+    );
+    z-index: 1;
+}
+
+/* 背景テキスト */
+.page-top .nh-concept-bg-big {
+    position: absolute;
+    top: 50%;
+    left: -5%;
+    transform: translateY(-50%);
+    font-family: var(--nh-font-en);
+    font-size: 12vw;
+    font-weight: 300;
+    color: var(--nh-color-wood-pale);
+    opacity: 0.2;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 2;
+    writing-mode: vertical-rl;
+    letter-spacing: 0.1em;
+}
+
+/* コンテナを前面に */
+.page-top .nh-concept-section .nh-container {
+    position: relative;
+    z-index: 3;
+}
+
+/* 元の画像を非表示 */
+.page-top .nh-concept-img-main {
+    display: none;
+}
+
+/* 左エリアのレイアウト調整 */
+.page-top .nh-concept-left-area {
+    flex: none;
+    position: relative;
+}
+
+/* 縦書きリードテキスト */
+.page-top .nh-concept-vertical-lead {
+    writing-mode: vertical-rl;
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 1.8;
+    letter-spacing: 0.15em;
+    color: var(--nh-color-text);
+    font-family: var(--nh-font-jp-serif);
+    position: relative;
+    background: rgba(255,255,255,0.85);
+    padding: 40px 20px;
+    margin: 0;
+    white-space: nowrap;
+    border-radius: 4px;
+}
+
+/* レイアウト変更 */
+.page-top .nh-concept-layout-v2 {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    position: relative;
+    z-index: 3;
+}
+
+/* テキストエリア */
+.page-top .nh-concept-text-area {
+    flex: 1;
+    background: rgba(255,255,255,0.9);
+    padding: 50px 40px;
+    border-radius: 8px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+}
+
+.page-top .nh-concept-desc-fix {
+    font-size: 1.05rem;
+    line-height: 2.2;
+    color: var(--nh-color-text);
+    margin: 0;
+}
+
+/* レスポンシブ */
+@media (max-width: 960px) {
+    .page-top .nh-concept-section {
+        padding: 100px 0;
+        min-height: auto;
+    }
+    
+    .page-top .nh-concept-layout-v2 {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .page-top .nh-concept-vertical-lead {
+        writing-mode: horizontal-tb;
+        font-size: 1.6rem;
+        text-align: center;
+        padding: 20px 30px;
+    }
+    
+    .page-top .nh-concept-text-area {
+        padding: 30px 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-top .nh-concept-bg-big {
+        font-size: 18vw;
+        opacity: 0.1;
+    }
+    
+    .page-top .nh-concept-vertical-lead {
+        font-size: 1.4rem;
+    }
+    
+    .page-top .nh-concept-desc-fix {
+        font-size: 0.95rem;
+        line-height: 2;
+    }
+}
+
+    
+/* --------------------------------------------------
+   ANDWELLセクション
+   -------------------------------------------------- */
+.page-top .nh-andwell-section {
+    background: #f9f7f4;
+    padding: 120px 0;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+/* 上部の縦線 */
+.page-top .nh-vertical-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 1px;
+    height: 80px;
+    background: var(--nh-color-accent);
+    transform: translateX(-50%);
+}
+
+.page-top .nh-andwell-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* キッカーテキスト */
+.page-top .nh-andwell-kicker {
+    display: block;
+    font-size: 0.9rem;
+    letter-spacing: 0.2em;
+    color: var(--nh-color-accent);
+    margin-bottom: 30px;
+}
+
+/* SVGロゴ */
+.page-top .nh-andwell-logo-wrap {
+    margin-bottom: 50px;
+}
+
+.page-top .nh-andwell-svg-logo {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
+
+.page-top .andwell-stroke {
+    fill: none;
+    stroke: var(--nh-color-text);
+    stroke-width: 1;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: drawStroke 2s ease forwards;
+    font-family: 'Cormorant', serif;  /* 追加 */
+    font-weight: 400;  
+}
+
+.page-top .andwell-fill {
+    fill: var(--nh-color-text);
+    opacity: 0;
+    animation: fillIn 1s ease 1.5s forwards;
+    font-family: 'Cormorant', serif;  /* 追加 */
+    font-weight: 400; 
+}
+
+@keyframes drawStroke {
+    to { stroke-dashoffset: 0; }
+}
+
+@keyframes fillIn {
+    to { opacity: 1; }
+}
+
+/* 本文エリア */
+.page-top .nh-andwell-body {
+    background: #fff;
+    padding: 50px;
+    border-radius: 4px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+    text-align: left;
+}
+
+.page-top .nh-andwell-body p {
+    font-size: 1rem;
+    line-height: 2.2;
+    color: var(--nh-color-text);
+    margin-bottom: 1.5em;
+}
+
+.page-top .nh-andwell-body p:last-child {
+    margin-bottom: 0;
+}
+
+/* レスポンシブ */
+@media (max-width: 768px) {
+    .page-top .nh-andwell-section {
+        padding: 80px 0;
+    }
+    
+    .page-top .nh-vertical-line {
+        height: 50px;
+    }
+    
+    .page-top .nh-andwell-kicker {
+        font-size: 0.8rem;
+    }
+    
+    .page-top .nh-andwell-svg-logo {
+        max-width: 90%;
+    }
+    
+    .page-top .nh-andwell-body {
+        padding: 30px 20px;
+    }
+    
+    .page-top .nh-andwell-body p {
+        font-size: 0.95rem;
+        line-height: 2;
+    }
+}
+
+    
+   /* --------------------------------------------------
+   FEATUREセクション（モデルハウス風）
+   -------------------------------------------------- */
+.page-top .nh-feature-section {
+    background: #fff;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.page-top .nh-feature-section .nh-container {
+    padding: 80px 40px 40px;
+}
+
+.page-top .nh-feature-section .nh-sec-header {
+    margin-bottom: 0;
+    padding: 0;
+}
+
+.page-top .nh-feature-list {
+    margin: 0;
+    padding: 0;
+}
+
+/* 各アイテム - モデルハウス風 */
+.page-top .nh-feature-item {
+    position: relative;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+/* 偶数アイテムは右寄せ */
+.page-top .nh-feature-item:nth-child(even) {
+    justify-content: flex-end;
+}
+
+/* 背景画像 */
+.page-top .nh-feature-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+/* オーバーレイ（左から右へグラデーション） */
+.page-top .nh-feature-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        rgba(255,255,255,0.9) 0%,
+        rgba(255,255,255,0.6) 40%,
+        transparent 70%
+    );
+    z-index: 1;
+}
+
+/* 偶数アイテムはオーバーレイを反転 */
+.page-top .nh-feature-item:nth-child(even) .nh-feature-overlay {
+    background: linear-gradient(
+        270deg,
+        rgba(255,255,255,0.9) 0%,
+        rgba(255,255,255,0.6) 40%,
+        transparent 70%
+    );
+}
+
+/* コンテンツエリア */
+.page-top .nh-feature-content {
+    position: relative;
+    z-index: 2;
+    max-width: 450px;
+    padding: 40px;
+    margin-left: 80px;
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+/* 偶数アイテムは右寄せ */
+.page-top .nh-feature-item:nth-child(even) .nh-feature-content {
+    margin-left: 0;
+    margin-right: 80px;
+    text-align: right;
+}
+
+.page-top .nh-feature-num {
+    font-family: var(--nh-font-en);
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    color: var(--nh-color-accent);
+    margin-bottom: 10px;
+}
+
+.page-top .nh-feature-title {
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin-bottom: 15px;
+    color: var(--nh-color-text);
+}
+
+.page-top .nh-feature-desc {
+    font-size: 1rem;
+    line-height: 1.9;
+    color: var(--nh-color-text);
+    margin: 0;
+}
+
+/* 元の画像ボックスを非表示 */
+.page-top .nh-feature-img-box {
+    display: none;
+}
+
+/* レスポンシブ */
+@media (max-width: 960px) {
+    .page-top .nh-feature-item {
+        height: 450px;
+    }
+    
+    .page-top .nh-feature-content {
+        margin-left: 40px;
+        max-width: 400px;
+    }
+    
+    .page-top .nh-feature-item:nth-child(even) .nh-feature-content {
+        margin-right: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-top .nh-feature-section .nh-container {
+        padding: 60px 20px 30px;
+    }
+    
+    .page-top .nh-feature-item {
+        height: 400px;
+        justify-content: center;
+    }
+    
+    .page-top .nh-feature-item:nth-child(even) {
+        justify-content: center;
+    }
+    
+    .page-top .nh-feature-overlay {
+        background: rgba(255,255,255,0.85);
+    }
+    
+    .page-top .nh-feature-item:nth-child(even) .nh-feature-overlay {
+        background: rgba(255,255,255,0.85);
+    }
+    
+    .page-top .nh-feature-content {
+        margin: 0 20px;
+        padding: 30px;
+        text-align: center;
+        max-width: none;
+    }
+    
+    .page-top .nh-feature-item:nth-child(even) .nh-feature-content {
+        margin: 0 20px;
+        text-align: center;
+    }
+    
+    .page-top .nh-feature-title {
+        font-size: 1.4rem;
+    }
+    
+    .page-top .nh-feature-desc {
+        font-size: 0.95rem;
+        line-height: 1.8;
+    }
+}
+
+    /* ========== セクション間スペーサー（共通） ========== */
+.page-top .nh-section-spacer {
+    background: var(--nh-color-bg);
+    padding: 80px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-top .nh-spacer-line {
+    width: 1px;
+    height: 80px;
+    background: linear-gradient(
+        180deg,
+        transparent 0%,
+        var(--nh-color-wood) 50%,
+        transparent 100%
+    );
+}
+
+/* ========== セクション間スペーサー（シンプル縦ライン） ========== */
+.page-top .nh-section-spacer {
+    background: var(--nh-color-bg);
+    padding: 80px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-top .nh-spacer-line {
+    width: 1px;
+    height: 80px;
+    background: linear-gradient(
+        180deg,
+        transparent 0%,
+        var(--nh-color-wood) 50%,
+        transparent 100%
+    );
+}
+
+/* 施工事例セクションの上余白を調整 */
+.page-top .nh-works-section {
+    padding-top: 60px;
+}
+
+/* レスポンシブ */
+@media (max-width: 768px) {
+    .page-top .nh-section-spacer {
+        padding: 50px 0;
+    }
+    
+    .page-top .nh-spacer-line {
+        height: 60px;
+    }
+    
+    .page-top .nh-works-section {
+        padding-top: 40px;
+    }
+}
+
+
+     
+    /* ========== 施工事例セクション ========== */
+    .page-top .nh-works-section {
+        background: var(--nh-color-bg);
+        padding: 100px 0;
+    }
+    .page-top .nh-works-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+    .page-top .nh-works-item {
+        position: relative;
+        overflow: hidden;
+    }
+    .page-top .nh-works-item img {
+        width: 100%;
+        aspect-ratio: 4/3;
+        object-fit: cover;
+        transition: transform 0.5s;
+    }
+    .page-top .nh-works-item:hover img {
+        transform: scale(1.05);
+    }
+    .page-top .nh-works-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 20px;
+        background: linear-gradient(transparent, rgba(0,0,0,0.7));
+        color: #fff;
+    }
+    .page-top .nh-works-title {
+        font-size: 1rem;
+        font-weight: 400;
+        margin: 0;
+    }
+    
+    @media (max-width: 768px) {
+        .page-top .nh-works-grid { grid-template-columns: 1fr; }
+    }
+    
+    /* ========== セクション間スペーサー ========== */
+.page-top .nh-section-spacer {
+    background: var(--nh-color-bg);
+    padding: 80px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-top .nh-spacer-line {
+    width: 1px;
+    height: 80px;
+    background: linear-gradient(
+        180deg,
+        transparent 0%,
+        var(--nh-color-wood) 50%,
+        transparent 100%
+    );
+}
+
+/* ========== モデルハウスセクション（リニューアル） ========== */
+.page-top .nh-model-section {
+    position: relative;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    overflow: hidden;
+}
+
+.page-top .nh-model-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    transition: transform 8s ease;
+}
+
+.page-top .nh-model-section:hover .nh-model-bg {
+    transform: scale(1.05);
+}
+
+.page-top .nh-model-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        180deg,
+        rgba(0,0,0,0.3) 0%,
+        rgba(0,0,0,0.5) 100%
+    );
+    z-index: 1;
+}
+
+.page-top .nh-model-content {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+    padding: 0 20px;
+}
+
+.page-top .nh-model-en {
+    font-family: var(--nh-font-en);
+    font-size: 0.85rem;
+    letter-spacing: 0.25em;
+    margin-bottom: 20px;
+    opacity: 0.9;
+}
+
+.page-top .nh-model-title {
+    font-size: 2.8rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    margin: 0 0 20px;
+    line-height: 1.4;
+}
+
+.page-top .nh-model-desc {
+    font-size: 1rem;
+    line-height: 1.8;
+    margin: 0 0 40px;
+    opacity: 0.9;
+    letter-spacing: 0.05em;
+}
+
+.page-top .nh-model-btn {
+    display: inline-block;
+    padding: 18px 60px;
+    border: 1px solid #fff;
+    color: #fff;
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.page-top .nh-model-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    transition: left 0.4s ease;
+    z-index: -1;
+}
+
+.page-top .nh-model-btn:hover {
+    color: var(--nh-color-text);
+}
+
+.page-top .nh-model-btn:hover::before {
+    left: 0;
+}
+
+/* レスポンシブ */
+@media (max-width: 768px) {
+    .page-top .nh-section-spacer {
+        padding: 50px 0;
+    }
+    
+    .page-top .nh-spacer-line {
+        height: 60px;
+    }
+    
+    .page-top .nh-model-section {
+        height: 450px;
+    }
+    
+    .page-top .nh-model-title {
+        font-size: 1.8rem;
+    }
+    
+    .page-top .nh-model-desc {
+        font-size: 0.9rem;
+        margin-bottom: 30px;
+    }
+    
+    .page-top .nh-model-btn {
+        padding: 15px 45px;
+    }
+}
+
+    
+    /* ========== カタログセクション ========== */
+    .page-top .nh-catalog-section {
+        background: var(--nh-color-bg-warm);
+        padding: 100px 0;
+    }
+    .page-top .nh-catalog-layout {
+        display: flex;
+        align-items: center;
+        gap: 80px;
+    }
+    .page-top .nh-catalog-img {
+        flex: 1;
+    }
+    .page-top .nh-catalog-img img {
+        max-width: 400px;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    }
+    .page-top .nh-catalog-content {
+        flex: 1;
+    }
+    .page-top .nh-catalog-title {
+        font-size: 1.8rem;
+        font-weight: 500;
+        margin-bottom: 20px;
+    }
+    .page-top .nh-catalog-desc {
+        font-size: 1rem;
+        line-height: 2;
+        margin-bottom: 30px;
+        color: var(--nh-color-text-light);
+    }
+    
+    /* カタログセクション用ボタン */
+.page-top .nh-catalog-section .nh-btn {
+    display: inline-block;
+    padding: 18px 50px;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    color: var(--nh-color-accent);
+    border: 1px solid var(--nh-color-accent);
+    background: transparent;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.page-top .nh-catalog-section .nh-btn:hover {
+    background: var(--nh-color-accent);
+    color: #fff;
+}
+    
+    @media (max-width: 768px) {
+        .page-top .nh-catalog-layout { flex-direction: column; gap: 40px; }
+        .page-top .nh-catalog-img img { max-width: 100%; }
+    }
+    
+    /* ========== Topics / COLUMNセクション ========== */
+    .page-top .topics-sec {
+        padding: 100px 0;
+        background: var(--nh-color-bg-gray);
+    }
+    
+    /* COLUMNセクション */
+    .page-top .nh-column-section {
+        margin-bottom: 100px;
+    }
+    
+    .page-top .nh-column-header-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 40px;
+        gap: 40px;
+    }
+    
+    .page-top .nh-column-title {
+        display: flex;
+        align-items: baseline;
+        gap: 15px;
+    }
+    
+    .page-top .nh-column-en {
+        font-family: var(--nh-font-en);
+        font-size: 2rem;
+        font-weight: 500;
+        letter-spacing: 0.05em;
+        color: var(--nh-color-text);
+    }
+    
+    .page-top .nh-column-jp {
+        font-size: 1rem;
+        color: var(--nh-color-sub);
+        letter-spacing: 0.1em;
+    }
+    
+    .page-top .nh-column-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .page-top .nh-column-item {
+        border-bottom: 1px solid var(--nh-color-border);
+    }
+    
+    .page-top .nh-column-item:first-child {
+        border-top: 1px solid var(--nh-color-border);
+    }
+    
+    .page-top .nh-column-item a {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        padding: 30px 0;
+        text-decoration: none;
+        color: var(--nh-color-text);
+        transition: all 0.3s ease;
+    }
+    
+    .page-top .nh-column-item a:hover {
+        background: var(--nh-color-bg-warm);
+        padding-left: 20px;
+        padding-right: 20px;
+        margin: 0 -20px;
+    }
+    
+    .page-top .nh-column-img {
+        width: 200px;
+        flex-shrink: 0;
+        overflow: hidden;
+        border-radius: 4px;
+    }
+    
+    .page-top .nh-column-img img {
+        width: 100%;
+        aspect-ratio: 16 / 10;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+    }
+    
+    .page-top .nh-column-item:hover .nh-column-img img {
+        transform: scale(1.05);
+    }
+    
+    .page-top .nh-column-info {
+        flex: 1;
+    }
+    
+    .page-top .nh-column-meta {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 12px;
+    }
+    
+    .page-top .nh-column-date {
+        font-family: var(--nh-font-en);
+        font-size: 0.9rem;
+        color: var(--nh-color-sub);
+        letter-spacing: 0.05em;
+    }
+    
+    .page-top .nh-column-cat {
+        display: inline-block;
+        font-size: 0.8rem;
+        padding: 5px 15px;
+        border: 1px solid var(--nh-color-sub);
+        border-radius: 3px;
+        color: var(--nh-color-text);
+        background: transparent;
+    }
+    
+    .page-top .nh-column-name {
+        font-size: 1.1rem;
+        font-weight: 400;
+        line-height: 1.7;
+        color: var(--nh-color-text);
+        margin: 0;
+    }
+    
+    .page-top .nh-column-btn-sp {
+        display: block;
+        text-align: center;
+        margin-top: 30px;
+        padding: 15px 30px;
+        font-size: 0.9rem;
+        letter-spacing: 0.1em;
+        color: #fff;
+        background: var(--nh-color-text);
+        border-radius: 5px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+    
+    .page-top .nh-column-btn-sp:hover {
+        opacity: 0.8;
+    }
+    
+    @media (max-width: 960px) {
+        .page-top .nh-column-header-row {
+            flex-direction: column;
+            gap: 30px;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .page-top .topics-sec { padding: 70px 0; }
+        .page-top .nh-column-section { margin-bottom: 60px; }
+        .page-top .nh-column-en { font-size: 1.5rem; }
+        .page-top .nh-column-item a {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 20px 0;
+        }
+        .page-top .nh-column-item a:hover {
+            padding-left: 0;
+            padding-right: 0;
+            margin: 0;
+        }
+        .page-top .nh-column-img { width: 100%; }
+        .page-top .nh-column-name { font-size: 1rem; }
+    }
+    
+    /* ========== リンクボックス（テキスト版） ========== */
+.page-top .nh-link-boxes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+}
+
+.page-top .nh-link-box {
+    position: relative;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--nh-color-bg-section);
+    border-right: 1px solid var(--nh-color-border);
+    transition: all 0.3s ease;
+}
+
+.page-top .nh-link-box:last-child {
+    border-right: none;
+}
+
+.page-top .nh-link-box:hover {
+    background: var(--nh-color-bg-warm);
+}
+
+/* 画像を非表示 */
+.page-top .nh-link-box img {
+    display: none;
+}
+
+/* オーバーレイを非表示 */
+.page-top .nh-link-box-overlay {
+    display: none;
+}
+
+/* テキストコンテナ */
+.page-top .nh-link-box-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* 英語テキスト（筆記体） */
+.page-top .nh-link-box-en {
+    font-family: 'Pinyon Script', 'Dancing Script', 'Great Vibes', cursive;
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: var(--nh-color-accent);
+    margin-bottom: 10px;
+    letter-spacing: 0.02em;
+    transition: transform 0.3s ease;
+}
+
+.page-top .nh-link-box:hover .nh-link-box-en {
+    transform: scale(1.05);
+}
+
+/* 日本語テキスト */
+.page-top .nh-link-box-jp {
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--nh-color-text);
+    letter-spacing: 0.1em;
+}
+
+/* レスポンシブ */
+@media (max-width: 768px) {
+    .page-top .nh-link-boxes {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+    
+    .page-top .nh-link-box {
+        aspect-ratio: auto;
+        padding: 50px 20px;
+        border-right: none;
+        border-bottom: 1px solid var(--nh-color-border);
+    }
+    
+    .page-top .nh-link-box:last-child {
+        border-bottom: none;
+    }
+    
+    .page-top .nh-link-box-en {
+        font-size: 2rem;
+    }
+}
+
+    
+    /* ========== CTAセクション（フッター上） ========== */
+    .page-top .nh-cta-section {
+        background: var(--nh-color-bg-warm);
+        padding: 80px 0;
+    }
+    
+    .page-top .nh-cta-section .nh-sec-header {
+        text-align: center;
+        margin-bottom: 20px;
+        padding-top: 0;
+    }
+    
+    .page-top .nh-cta-section-desc {
+        text-align: center;
+        font-size: 1rem;
+        color: var(--nh-color-text);
+        margin-bottom: 40px;
+    }
+    
+    .page-top .nh-cta-section-cards {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        max-width: 700px;
+        margin: 0 auto 40px;
+    }
+    
+    .page-top .nh-cta-section-card {
+        flex: 1;
+        background: #fff;
+        border: 1px solid var(--nh-color-border);
+        padding: 30px;
+        text-align: center;
+    }
+    
+    .page-top .nh-cta-section-card-title {
+        font-size: 0.9rem;
+        color: var(--nh-color-sub);
+        margin-bottom: 15px;
+    }
+    
+    .page-top .nh-cta-section-card .nh-cta-card-btn {
+        width: 100%;
+    }
+    
+    .page-top .nh-cta-section-card .nh-cta-card-tel {
+        font-size: 1.5rem;
+    }
+    
+    .page-top .nh-cta-section-links {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+    }
+    
+    .page-top .nh-cta-section-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.9rem;
+        color: var(--nh-color-text);
+    }
+    
+    .page-top .nh-cta-section-link:hover {
+        color: var(--nh-color-accent);
+    }
+    
+    .page-top .nh-cta-section-link .arrow {
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        border: 1px solid var(--nh-color-border);
+        border-radius: 50%;
+        position: relative;
+    }
+    
+    .page-top .nh-cta-section-link .arrow::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 6px;
+        height: 6px;
+        border-top: 1px solid var(--nh-color-text);
+        border-right: 1px solid var(--nh-color-text);
+        transform: translate(-60%, -50%) rotate(45deg);
+    }
+    
+    @media (max-width: 768px) {
+        .page-top .nh-cta-section { padding: 60px 0; }
+        .page-top .nh-cta-section-cards { flex-direction: column; gap: 20px; }
+        .page-top .nh-cta-section-links { flex-direction: column; gap: 15px; align-items: center; }
+    }
+    
+    /* ========== フッター ========== */
+.site-footer {
+    background: var(--nh-color-text);
+    color: #fff;
+    padding: 60px 40px 0;
+}
+
+.site-footer .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+.site-footer .footer-logo {
+    font-family: var(--nh-font-en);
+    font-size: 1.3rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 15px;
+}
+
+.site-footer .footer-address {
+    font-size: 0.85rem;
+    line-height: 1.8;
+    opacity: 0.8;
+    font-style: normal;
+}
+
+.site-footer .footer-nav ul {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+.site-footer .footer-nav a {
+    font-size: 0.85rem;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.site-footer .footer-nav a:hover {
+    opacity: 1;
+}
+
+.site-footer .footer-copy {
+    text-align: center;
+    margin-top: 60px;      /* 40px → 60px */
+    padding: 40px 0;       /* 20px → 40px */
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 0.75rem;
+    opacity: 0.6;
+}
+
+@media (max-width: 768px) {
+    .site-footer {
+        padding: 40px 20px 0;
+    }
+    
+    .site-footer .footer-inner {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .site-footer .footer-nav ul {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .site-footer .footer-copy {
+        margin-top: 40px;
+        padding: 30px 0;
+    }
+}
+
+    
+    /* ========== アニメーション ========== */
+    .nh-fade-up {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .nh-fade-up.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    </style>
+</head>
+<body>
+
+<!-- ヘッダー -->
+<header class="site-header">
+    <div class="header-inner">
+        <a href="/" class="logo">Natural Works</a>
+        <nav class="nh-pc-only">
+            <ul>
+                <li><a href="/concept/">コンセプト</a></li>
+                <li><a href="/works/">施工事例</a></li>
+                <li><a href="/model-house/">モデルハウス</a></li>
+                <li><a href="/event/">イベント</a></li>
+            </ul>
+        </nav>
+        <a href="/contact/" class="header-contact nh-pc-only">お問い合わせ</a>
+    </div>
+</header>
+
+<div class="page-top">
+    
+    <!-- 1. FVセクション（Swiperスライダー） -->
+    <section class="fv-sec first-v">
+        <div class="top-swiper swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="https://www.natural-space.jp/wp-content/themes/fast-mirai/img/top/fv-img-1.jpg" alt="FV Image 1">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://www.natural-space.jp/wp-content/themes/fast-mirai/img/top/fv-img-2.jpg" alt="FV Image 2">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://www.natural-space.jp/wp-content/themes/fast-mirai/img/top/fv-img-3.jpg" alt="FV Image 3">
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+        <p class="catch">自然とともに暮らす<br>心地よい住まいを</p>
+        <div class="scroll">SCROLL</div>
+    </section>
+    
+   <!-- 2. イベントセクション（メイン＋過去イベント） -->
+<section class="nh-event-section">
+    <div class="nh-container">
+        <div class="nh-event-header">
+            <div class="nh-event-title">
+                <span class="nh-event-en">EVENT</span>
+                <h2 class="nh-event-jp">イベント情報</h2>
+            </div>
+        </div>
+        
+        <!-- メインイベント（最新/次回） -->
+        <div class="nh-event-main">
+            <a href="#" class="nh-event-main-link">
+                <div class="nh-event-main-img">
+                    <span class="nh-event-main-badge">次回開催</span>
+                    <img src="https://via.placeholder.com/800x500/f5f3f0/c4b49a?text=Main+Event" alt="春の完成見学会">
+                </div>
+                <div class="nh-event-main-content">
+                    <div class="nh-event-main-meta">
+                        <span class="nh-event-main-date">
+                            <span class="nh-event-main-date-month">3</span>
+                            <span class="nh-event-main-date-sep">/</span>
+                            <span class="nh-event-main-date-day">29</span>
+                            <span class="nh-event-main-date-week">SAT</span>
+                            <span class="nh-event-main-date-range">- 30 SUN</span>
+                        </span>
+                        <span class="nh-event-main-tag">完成見学会</span>
+                    </div>
+                    <h3 class="nh-event-main-name">春の完成見学会 in 草加市</h3>
+                    <p class="nh-event-main-desc">自然素材をふんだんに使った、開放感あふれる平屋住宅。パッシブデザインを取り入れた、光と風が心地よいお住まいをご覧いただけます。</p>
+                    <span class="nh-event-main-more">詳しく見る<span class="arrow"></span></span>
+                </div>
+            </a>
+        </div>
+        
+      <!-- 過去のイベント -->
+<div class="nh-event-past">
+    <p class="nh-event-past-label">過去のイベント</p>
+    <div class="nh-event-past-row">
+        <ul class="nh-event-past-list">
+            <li class="nh-event-past-item">
+                <a href="#">
+                    <div class="nh-event-past-img">
+                        <img src="https://via.placeholder.com/400x250/f5f3f0/c4b49a?text=Past+Event+1" alt="家づくり相談会">
+                    </div>
+                    <div class="nh-event-past-info">
+                        <span class="nh-event-past-date">2026.03.15-16</span>
+                        <span class="nh-event-past-tag">相談会</span>
+                    </div>
+                    <p class="nh-event-past-name">家づくり相談会</p>
+                </a>
+            </li>
+            <li class="nh-event-past-item">
+                <a href="#">
+                    <div class="nh-event-past-img">
+                        <img src="https://via.placeholder.com/400x250/f5f3f0/c4b49a?text=Past+Event+2" alt="パッシブデザインセミナー">
+                    </div>
+                    <div class="nh-event-past-info">
+                        <span class="nh-event-past-date">2026.03.01</span>
+                        <span class="nh-event-past-tag">セミナー</span>
+                    </div>
+                    <p class="nh-event-past-name">パッシブデザインセミナー</p>
+                </a>
+            </li>
+            <li class="nh-event-past-item">
+                <a href="#">
+                    <div class="nh-event-past-img">
+                        <img src="https://via.placeholder.com/400x250/f5f3f0/c4b49a?text=Past+Event+3" alt="完成見学会 越谷市M様邸">
+                    </div>
+                    <div class="nh-event-past-info">
+                        <span class="nh-event-past-date">2026.02.22-23</span>
+                        <span class="nh-event-past-tag">完成見学会</span>
+                    </div>
+                    <p class="nh-event-past-name">完成見学会 越谷市M様邸</p>
+                </a>
+            </li>
+        </ul>
+        <a href="/event/" class="nh-event-btn nh-pc-only">イベント一覧を見る</a>
+    </div>
+</div>
+
+<a href="/event/" class="nh-event-btn-sp nh-sp-only">イベント一覧を見る</a>
+
+
+    </div>
+</section>
+
+    
+    <!-- 3. イントロメッセージ -->
+    <section class="nh-intro-message nh-fade-up">
+        <p>
+            自然の恵みを感じながら、<br>
+            家族がつながり、心が安らぐ住まいを。<br>
+            ナチュラルワークスは、そんな暮らしをご提案します。
+        </p>
+    </section>
+    
+    <!-- 4. コンセプトセクション -->
+    <section class="nh-section nh-concept-section">
+        <div class="nh-concept-bg-big">Concept</div>
+        <div class="nh-container">
+            <div class="nh-sec-header-row">
+                <div class="nh-sec-header nh-fade-up">
+                    <span class="nh-sec-title-en">Concept</span>
+                    <h2 class="nh-sec-title-jp">コンセプト</h2>
+                </div>
+            </div>
+            <div class="nh-concept-layout-v2">
+                <div class="nh-concept-left-area nh-fade-up">
+                    <h3 class="nh-concept-vertical-lead">まだ見ぬ未来の暮らしをつくる</h3>
+                    <img src="https://www.natural-space.jp/wp-content/themes/fast-mirai/img/top/concept-img-1-02.jpg" alt="コンセプトイメージ" class="nh-concept-img-main">
+                </div>
+                <div class="nh-concept-text-area nh-fade-up">
+                    <p class="nh-concept-desc-fix">
+                        家づくりを通じて、家族の幸せな未来をつくるために。<br>
+                        ナチュラルワークスは、お客様ひとり一人の「想い」を大切に、カタチにしていきます。<br>
+                        ただ建てるだけではない、その先の物語を共に描くために。
+                    </p>
+                    <div class="nh-btn-wrap" style="text-align: left; margin-top: 30px;">
+                        <a href="/concept/" class="nh-btn">Read Concept</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 5. ANDWELLセクション -->
+<section class="nh-section nh-andwell-section">
+    <div class="nh-vertical-line"></div>
+    <div class="nh-container">
+        <div class="nh-andwell-inner">
+            <span class="nh-andwell-kicker nh-fade-up">ナチュラルワークスの自由設計住宅</span>
+            <div class="nh-andwell-logo-wrap nh-fade-up">
+                <svg class="nh-andwell-svg-logo" id="andwellSvg" viewBox="0 0 700 120" xmlns="http://www.w3.org/2000/svg" aria-label="Andwell">
+    <text class="andwell-stroke" x="50%" y="55%"
+          dominant-baseline="middle" text-anchor="middle"
+          font-family="Cormorant, serif"
+          font-size="100" font-weight="400" letter-spacing="2">
+        Andwell
+    </text>
+    <text class="andwell-fill" x="50%" y="55%"
+          dominant-baseline="middle" text-anchor="middle"
+          font-family="Cormorant, serif"
+          font-size="100" font-weight="400" letter-spacing="2">
+        Andwell
+    </text>
+</svg>
+            </div>
+            <div class="nh-andwell-body nh-fade-up">
+                <p>
+                    私たちは、単なる「家」を売るのではありません。<br>
+                    川口市の風土に根ざし、ご家族の「未来の暮らし方」そのものをご提案します。<br>
+                    設計士、建築家、そして現場の職人までがお客様の想いを共有する「チーム」となり、対話を重ねることで、理想の住まいを形にします。
+                </p>
+                <p>
+                    私たちが得意とするのは、太陽の光や風といった自然の恵みを最大限に活かす「パッシブデザイン」。地域の特性を知り尽くしているからこそ、エネルギーに頼りすぎずとも夏は涼しく、冬は暖かい、快適な空間を実現できるのです。
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    
+    <!-- 6. Featureセクション -->
+<section class="nh-section nh-feature-section">
+    <div class="nh-container">
+        <div class="nh-sec-header nh-fade-up">
+            <span class="nh-sec-title-en">Feature</span>
+            <h2 class="nh-sec-title-jp">私たちの特徴</h2>
+        </div>
+    </div>
+    
+    <div class="nh-feature-list">
+        <!-- Feature 01 -->
+        <div class="nh-feature-item nh-fade-up">
+            <img src="img/gallery06_01.png" alt="自然素材" class="nh-feature-bg">
+            <div class="nh-feature-overlay"></div>
+            <div class="nh-feature-content">
+                <p class="nh-feature-num">Feature 01</p>
+                <h3 class="nh-feature-title">自然素材へのこだわり</h3>
+                <p class="nh-feature-desc">
+                    無垢材や漆喰など、自然素材をふんだんに使用。
+                    素材本来の温もりと、経年変化を楽しめる住まいをご提案します。
+                </p>
+            </div>
+        </div>
+        
+        <!-- Feature 02 -->
+        <div class="nh-feature-item nh-fade-up">
+            <img src="img/event-img-1.png" alt="パッシブデザイン" class="nh-feature-bg">
+            <div class="nh-feature-overlay"></div>
+            <div class="nh-feature-content">
+                <p class="nh-feature-num">Feature 02</p>
+                <h3 class="nh-feature-title">パッシブデザイン</h3>
+                <p class="nh-feature-desc">
+                    太陽の光や風の流れを活かした設計で、
+                    エアコンに頼りすぎない、心地よい暮らしを実現します。
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 特徴〜施工事例間のスペーサー -->
+<div class="nh-section-spacer">
+    <div class="nh-spacer-line"></div>
+</div>
+    
+    <!-- 8. 施工事例セクション -->
+    <section class="nh-section nh-works-section">
+        <div class="nh-container">
+            <div class="nh-sec-header-row">
+                <div class="nh-sec-header nh-fade-up">
+                    <span class="nh-sec-title-en">Works</span>
+                    <h2 class="nh-sec-title-jp">施工事例</h2>
+                </div>
+            </div>
+            <div class="nh-works-grid">
+                <a href="#" class="nh-works-item nh-fade-up">
+                    <img src="img/gallery01_01.webp" alt="施工事例1">
+                    <div class="nh-works-overlay">
+                        <p class="nh-works-title">草加市 K様邸</p>
+                    </div>
+                </a>
+                <a href="#" class="nh-works-item nh-fade-up">
+                    <img src="img/sg-i46.webp" alt="施工事例2">
+                    <div class="nh-works-overlay">
+                        <p class="nh-works-title">越谷市 S様邸</p>
+                    </div>
+                </a>
+                <a href="#" class="nh-works-item nh-fade-up">
+                    <img src="img/gallery07_17.png" alt="施工事例3">
+                    <div class="nh-works-overlay">
+                        <p class="nh-works-title">春日部市 T様邸</p>
+                    </div>
+                </a>
+            </div>
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="/works/" class="nh-btn">View All Works</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- モデルハウスセクション前のスペーサー -->
+<div class="nh-section-spacer">
+    <div class="nh-spacer-line"></div>
+</div>
+
+<!-- 9. モデルハウスセクション -->
+<section class="nh-model-section">
+    <img src="https://www.natural-space.jp/wp-content/themes/fast-mirai/img/top/fv-img-3.jpg" alt="モデルハウス" class="nh-model-bg">
+    <div class="nh-model-overlay"></div>
+    <div class="nh-model-content">
+        <p class="nh-model-en">MODEL HOUSE</p>
+        <h2 class="nh-model-title">モデルハウス見学</h2>
+        <p class="nh-model-desc">実際の空間で、自然素材の心地よさを体感してください。</p>
+        <a href="/model-house/" class="nh-model-btn">詳しく見る</a>
+    </div>
+</section>
+
+    
+    <!-- 10. カタログセクション -->
+    <section class="nh-section nh-catalog-section">
+        <div class="nh-container">
+            <div class="nh-sec-header-row">
+                <div class="nh-sec-header nh-fade-up">
+                    <span class="nh-sec-title-en">Catalog</span>
+                    <h2 class="nh-sec-title-jp">カタログ請求</h2>
+                </div>
+            </div>
+            <div class="nh-catalog-layout nh-fade-up">
+                <div class="nh-catalog-img">
+                    <img src="https://www.natural-space.jp/wp-content/themes/fast-mirai/img/top/catalog-img-1.jpg" alt="カタログ">
+                </div>
+                <div class="nh-catalog-content">
+                    <h3 class="nh-catalog-title">無料カタログプレゼント</h3>
+                    <p class="nh-catalog-desc">
+                        ナチュラルワークスの家づくりがわかるカタログを<br>
+                        無料でお届けいたします。<br>
+                        施工事例や素材のこだわりなど、詳しくご紹介しています。
+                    </p>
+                    <a href="/catalog/" class="nh-btn">カタログ請求</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 11. Topics & COLUMN -->
+    <section class="topics-sec">
+        <div class="nh-container">
+            
+            <!-- COLUMNセクション -->
+            <div class="nh-column-section">
+                <div class="nh-column-header-row">
+                    <div class="nh-column-title">
+                        <span class="nh-column-en">COLUMN</span>
+                        <span class="nh-column-jp">コラム</span>
+                    </div>
+                  </div>
+                    
+                <ul class="nh-column-list">
+                    <li class="nh-column-item">
+                        <a href="#">
+                            <div class="nh-column-img">
+                                <img src="https://via.placeholder.com/280x180/f5f3f0/c4b49a?text=Column+1" alt="コラム1">
+                            </div>
+                            <div class="nh-column-info">
+                                <div class="nh-column-meta">
+                                    <span class="nh-column-date">2025/08/04</span>
+                                    <span class="nh-column-cat">役立ち情報</span>
+                                </div>
+                                <p class="nh-column-name">絶対パントリーを作るべきなのはこんな人！もっと便利な活用術をご紹介。</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nh-column-item">
+                        <a href="#">
+                            <div class="nh-column-img">
+                                <img src="https://via.placeholder.com/280x180/f5f3f0/c4b49a?text=Column+2" alt="コラム2">
+                            </div>
+                            <div class="nh-column-info">
+                                <div class="nh-column-meta">
+                                    <span class="nh-column-date">2025/04/24</span>
+                                    <span class="nh-column-cat">役立ち情報</span>
+                                </div>
+                                <p class="nh-column-name">アメリカンハウス外観の要　ラップサイディングのメンテナンス方法！</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nh-column-item">
+                        <a href="#">
+                            <div class="nh-column-img">
+                                <img src="https://via.placeholder.com/280x180/f5f3f0/c4b49a?text=Column+3" alt="コラム3">
+                            </div>
+                            <div class="nh-column-info">
+                                <div class="nh-column-meta">
+                                    <span class="nh-column-date">2025/04/08</span>
+                                    <span class="nh-column-cat">役立ち情報</span>
+                                </div>
+                                <p class="nh-column-name">アメリカンハウス外観の要　ラップサイディングのメリット＆デメリット</p>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <a href="/column/" class="nh-column-btn-sp nh-sp-only">詳しく見る</a>
+            </div>
+            
+           <!-- リンクボックス -->
+<div class="nh-link-boxes">
+    <a href="/company/" class="nh-link-box">
+        <div class="nh-link-box-text">
+            <span class="nh-link-box-en">Company</span>
+            <span class="nh-link-box-jp">会社情報</span>
+        </div>
+    </a>
+    <a href="/aftercare/" class="nh-link-box">
+        <div class="nh-link-box-text">
+            <span class="nh-link-box-en">After Service</span>
+            <span class="nh-link-box-jp">アフター点検</span>
+        </div>
+    </a>
+    <a href="/recruit/" class="nh-link-box">
+        <div class="nh-link-box-text">
+            <span class="nh-link-box-en">Recruit</span>
+            <span class="nh-link-box-jp">採用情報</span>
+        </div>
+    </a>
+</div>
+</div> 
+</section>
+
+    
+    <!-- 12. CONTACT CTAセクション -->
+    <section class="nh-cta-section">
+        <div class="nh-container">
+            <div class="nh-sec-header">
+                <span class="nh-sec-title-en">Contact</span>
+                <h2 class="nh-sec-title-jp">お問い合わせ</h2>
+            </div>
+            <p class="nh-cta-section-desc">
+                お問い合わせはフォーム、または、お電話より、お気軽にご連絡ください。
+            </p>
+            <div class="nh-cta-section-cards">
+                <div class="nh-cta-section-card">
+                    <p class="nh-cta-section-card-title">WEBからのお問い合わせ</p>
+                    <a href="/contact/" class="nh-cta-card-btn">
+                        お問い合わせフォーム
+                        <span class="arrow"></span>
+                    </a>
+                </div>
+                <div class="nh-cta-section-card">
+                    <p class="nh-cta-section-card-title">お電話からのお問い合わせ</p>
+                    <p class="nh-cta-card-tel"><a href="tel:0480000000">048-000-0000</a></p>
+                    <div class="nh-cta-card-line"></div>
+                    <p class="nh-cta-card-time">受付 9:00〜17:30 ／ 定休：水曜</p>
+                </div>
+            </div>
+            <div class="nh-cta-section-links">
+                <a href="/model-house/" class="nh-cta-section-link">
+                    <span class="arrow"></span>
+                    <span>モデルハウス一覧</span>
+                </a>
+                <a href="/catalog/" class="nh-cta-section-link">
+                    <span class="arrow"></span>
+                    <span>カタログ請求</span>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+</div><!-- /.page-top -->
+
+<!-- フッター -->
+<footer class="site-footer">
+    <div class="footer-inner">
+        <div class="footer-info">
+            <p class="footer-logo">Natural Works</p>
+            <address class="footer-address">
+                〒340-0000 埼玉県草加市○○町0-0-0<br>
+                TEL: 048-000-0000
+            </address>
+        </div>
+        <nav class="footer-nav nh-pc-only">
+            <ul>
+                <li><a href="/concept/">コンセプト</a></li>
+                <li><a href="/works/">施工事例</a></li>
+                <li><a href="/event/">イベント</a></li>
+                <li><a href="/contact/">お問い合わせ</a></li>
+            </ul>
+        </nav>
+    </div>
+    <p class="footer-copy">© 2026 Natural Works. All Rights Reserved.</p>
+</footer>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // Swiper初期化（FVスライダー）
+    var topSwiper = new Swiper('.top-swiper', {
+        loop: true,
+        effect: 'fade',
+        fadeEffect: { crossFade: true },
+        speed: 1500,
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true
+        }
+    });
+    
+    // Andwell 手書きアニメーション
+var andwellSvg = document.getElementById('andwellSvg');
+if (andwellSvg) {
+    var strokeText = andwellSvg.querySelector('.andwell-stroke');
+    
+    function initAndwellStroke() {
+        if (strokeText && typeof strokeText.getComputedTextLength === 'function') {
+            var textLen = strokeText.getComputedTextLength();
+            var dashLen = Math.max(textLen * 3, 3000);
+            strokeText.style.strokeDasharray = dashLen;
+            strokeText.style.strokeDashoffset = dashLen;
+        }
+    }
+    
+    if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(function() { initAndwellStroke(); });
+    } else {
+        setTimeout(initAndwellStroke, 500);
+    }
+    
+    if ('IntersectionObserver' in window) {
+        var andwellObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    andwellSvg.classList.add('is-animated');
+                    andwellObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+        andwellObserver.observe(andwellSvg);
+    } else {
+        andwellSvg.classList.add('is-animated');
+    }
+}
+
+    
+    
+    // フェードアップアニメーション
+    var fadeUpElements = document.querySelectorAll('.nh-fade-up');
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+    
+    fadeUpElements.forEach(function(el) {
+        observer.observe(el);
+    });
+    
+});
+</script>
+
+</body>
+</html>
