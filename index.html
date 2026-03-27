@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Noto+Sans+JP:wght@300;400;500;600&family=Noto+Serif+JP:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing Script&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=EB+Garamond:wght@400;500&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
     
     <!-- Swiper CSS -->
@@ -195,6 +196,20 @@
         background: #fff;
         animation: scrollLine 1.5s ease-in-out infinite;
     }
+    
+    .page-top .andwell-catch {
+    fill: var(--nh-color-text-light);
+    opacity: 0;
+    animation: fillIn 1s ease 0.5s forwards;
+}
+
+/* アンドウェル（サブテキスト）のスタイル */
+.page-top .andwell-sub {
+    fill: var(--nh-color-text);
+    opacity: 0;
+    animation: fillIn 1s ease 2s forwards;
+}
+
     @keyframes scrollLine {
         0% { transform: scaleY(0); transform-origin: top; }
         50% { transform: scaleY(1); transform-origin: top; }
@@ -816,20 +831,26 @@
 .page-top .andwell-stroke {
     fill: none;
     stroke: var(--nh-color-text);
-    stroke-width: 1;
+    stroke-width: 0.5;
     stroke-dasharray: 1000;
     stroke-dashoffset: 1000;
     animation: drawStroke 2s ease forwards;
-    font-family: 'Cormorant', serif;  /* 追加 */
-    font-weight: 400;  
+        font-family: 'Lato', sans-serif;
+    font-weight: 100;
 }
 
 .page-top .andwell-fill {
     fill: var(--nh-color-text);
     opacity: 0;
     animation: fillIn 1s ease 1.5s forwards;
-    font-family: 'Cormorant', serif;  /* 追加 */
-    font-weight: 400; 
+        font-family: 'Lato', sans-serif;
+    font-weight: 100;
+}
+
+.page-top .andwell-sub {
+    fill: var(--nh-color-text);
+    opacity: 0;
+    animation: fillIn 1s ease 2s forwards;
 }
 
 @keyframes drawStroke {
@@ -1195,11 +1216,10 @@
         transparent 100%
     );
 }
-
-/* ========== モデルハウスセクション（リニューアル） ========== */
+/* ========== モデルハウスセクション ========== */
 .page-top .nh-model-section {
     position: relative;
-    height: 600px;
+    height: 700px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1232,7 +1252,7 @@
     background: linear-gradient(
         180deg,
         rgba(0,0,0,0.3) 0%,
-        rgba(0,0,0,0.5) 100%
+        rgba(0,0,0,0.55) 100%
     );
     z-index: 1;
 }
@@ -1240,7 +1260,7 @@
 .page-top .nh-model-content {
     position: relative;
     z-index: 2;
-    max-width: 600px;
+    max-width: 750px;
     padding: 0 20px;
 }
 
@@ -1248,7 +1268,7 @@
     font-family: var(--nh-font-en);
     font-size: 0.85rem;
     letter-spacing: 0.25em;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     opacity: 0.9;
 }
 
@@ -1256,15 +1276,29 @@
     font-size: 2.8rem;
     font-weight: 500;
     letter-spacing: 0.15em;
-    margin: 0 0 20px;
+    margin: 0 0 40px;
     line-height: 1.4;
 }
 
-.page-top .nh-model-desc {
-    font-size: 1rem;
-    line-height: 1.8;
-    margin: 0 0 40px;
+/* コンセプトボックス（背景・枠なし） */
+.page-top .nh-model-concept-box {
+    padding: 0;
+    margin-bottom: 40px;
+}
+
+.page-top .nh-model-concept-label {
+    font-family: var(--nh-font-en);
+    font-size: 0.9rem;
+    letter-spacing: 0.2em;
+    margin: 0 0 15px;
     opacity: 0.9;
+}
+
+.page-top .nh-model-concept-text {
+    font-family: var(--nh-font-jp-serif);
+    font-size: 1rem;
+    line-height: 2.2;
+    margin: 0;
     letter-spacing: 0.05em;
 }
 
@@ -1302,31 +1336,31 @@
 
 /* レスポンシブ */
 @media (max-width: 768px) {
-    .page-top .nh-section-spacer {
-        padding: 50px 0;
-    }
-    
-    .page-top .nh-spacer-line {
-        height: 60px;
-    }
-    
     .page-top .nh-model-section {
-        height: 450px;
+        height: auto;
+        min-height: 550px;
+        padding: 70px 0;
     }
     
     .page-top .nh-model-title {
         font-size: 1.8rem;
+        margin-bottom: 30px;
     }
     
-    .page-top .nh-model-desc {
-        font-size: 0.9rem;
+    .page-top .nh-model-concept-box {
         margin-bottom: 30px;
+    }
+    
+    .page-top .nh-model-concept-text {
+        font-size: 0.9rem;
+        line-height: 2;
     }
     
     .page-top .nh-model-btn {
         padding: 15px 45px;
     }
 }
+
 
     
     /* ========== カタログセクション ========== */
@@ -2004,18 +2038,32 @@
         <div class="nh-andwell-inner">
             <span class="nh-andwell-kicker nh-fade-up">ナチュラルワークスの自由設計住宅</span>
             <div class="nh-andwell-logo-wrap nh-fade-up">
-                <svg class="nh-andwell-svg-logo" id="andwellSvg" viewBox="0 0 700 120" xmlns="http://www.w3.org/2000/svg" aria-label="Andwell">
+                <svg class="nh-andwell-svg-logo" id="andwellSvg" viewBox="0 0 700 200" xmlns="http://www.w3.org/2000/svg" aria-label="Andwell">
+     
+    <text class="andwell-catch" x="50%" y="7%"
+          dominant-baseline="middle" text-anchor="middle"
+          font-family="'Noto Serif JP', serif"
+          font-size="20" font-weight="400" letter-spacing="4">
+        自然体で暮らす、心地よい家。
+    </text>
+    
     <text class="andwell-stroke" x="50%" y="55%"
           dominant-baseline="middle" text-anchor="middle"
-          font-family="Cormorant, serif"
-          font-size="100" font-weight="400" letter-spacing="2">
+          font-family="Arial, sans-serif"
+          font-size="100" font-weight="300" letter-spacing="2">
         Andwell
     </text>
     <text class="andwell-fill" x="50%" y="55%"
           dominant-baseline="middle" text-anchor="middle"
-          font-family="Cormorant, serif"
-          font-size="100" font-weight="400" letter-spacing="2">
+          font-family="Arial, sans-serif"
+          font-size="100" font-weight="300" letter-spacing="2">
         Andwell
+    </text>
+        <text class="andwell-sub" x="75%" y="90%"
+          dominant-baseline="middle" text-anchor="end"
+          font-family="'Noto Sans JP', sans-serif"
+          font-size="18" font-weight="400" letter-spacing="3">
+        アンドウェル
     </text>
 </svg>
             </div>
@@ -2026,7 +2074,7 @@
                     設計士、建築家、そして現場の職人までがお客様の想いを共有する「チーム」となり、対話を重ねることで、理想の住まいを形にします。
                 </p>
                 <p>
-                    私たちが得意とするのは、太陽の光や風といった自然の恵みを最大限に活かす「パッシブデザイン」。地域の特性を知り尽くしているからこそ、エネルギーに頼りすぎずとも夏は涼しく、冬は暖かい、快適な空間を実現できるのです。
+                    私たちが得意とするのは、太陽の光や風といった自然1の恵みを最大限に活かす「パッシブデザイン」。地域の特性を知り尽くしているからこそ、エネルギーに頼りすぎずとも夏は涼しく、冬は暖かい、快適な空間を実現できるのです。
                 </p>
             </div>
         </div>
@@ -2050,10 +2098,11 @@
             <div class="nh-feature-overlay"></div>
             <div class="nh-feature-content">
                 <p class="nh-feature-num">Feature 01</p>
-                <h3 class="nh-feature-title">自然素材へのこだわり</h3>
+                <h3 class="nh-feature-title">建築家と建てる<br>
+理想の家づくり</h3>
                 <p class="nh-feature-desc">
-                    無垢材や漆喰など、自然素材をふんだんに使用。
-                    素材本来の温もりと、経年変化を楽しめる住まいをご提案します。
+                    建築家とのタイアップにより、
+お客様の思い描いた素敵なお家を設計します。
                 </p>
             </div>
         </div>
@@ -2064,17 +2113,41 @@
             <div class="nh-feature-overlay"></div>
             <div class="nh-feature-content">
                 <p class="nh-feature-num">Feature 02</p>
-                <h3 class="nh-feature-title">パッシブデザイン</h3>
+                <h3 class="nh-feature-title">家族の未来を想う<br>
+家づくり</h3>
                 <p class="nh-feature-desc">
-                    太陽の光や風の流れを活かした設計で、
-                    エアコンに頼りすぎない、心地よい暮らしを実現します。
+                    暮らしは、日常という想い出を積み重ねてつくられていくもの。
+五感を満たすことで日常をより<br>幸せな時間へと誘います。
                 </p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- 特徴〜施工事例間のスペーサー -->
+
+    <!-- モデルハウスセクション前のスペーサー -->
+<div class="nh-section-spacer">
+    <div class="nh-spacer-line"></div>
+</div>
+
+<!-- 9. モデルハウスセクション -->
+<section class="nh-model-section">
+    <img src="https://www.natural-space.jp/wp-content/themes/fast-mirai/img/top/fv-img-3.jpg" alt="モデルハウス" class="nh-model-bg">
+    <div class="nh-model-overlay"></div>
+    <div class="nh-model-content">
+        <p class="nh-model-en">MODEL HOUSE</p>
+        <h2 class="nh-model-title">モデルハウス見学</h2>
+        <div class="nh-model-concept-box">
+            <p class="nh-model-concept-text">
+               家中に広がる本物の木ならではの香りと、<br>調湿された心地よい空気を体感できます。
+            </p>
+        </div>
+        <a href="/model-house/" class="nh-model-btn">詳しく見る</a>
+    </div>
+</section>
+
+    
+    <!-- 特徴〜施工事例間のスペーサー -->
 <div class="nh-section-spacer">
     <div class="nh-spacer-line"></div>
 </div>
@@ -2109,54 +2182,11 @@
                 </a>
             </div>
             <div style="text-align: center; margin-top: 50px;">
-                <a href="/works/" class="nh-btn">View All Works</a>
+                <a href="/works/" class="nh-event-btn">施工事例を全て見る</a>
             </div>
         </div>
     </section>
     
-    <!-- モデルハウスセクション前のスペーサー -->
-<div class="nh-section-spacer">
-    <div class="nh-spacer-line"></div>
-</div>
-
-<!-- 9. モデルハウスセクション -->
-<section class="nh-model-section">
-    <img src="https://www.natural-space.jp/wp-content/themes/fast-mirai/img/top/fv-img-3.jpg" alt="モデルハウス" class="nh-model-bg">
-    <div class="nh-model-overlay"></div>
-    <div class="nh-model-content">
-        <p class="nh-model-en">MODEL HOUSE</p>
-        <h2 class="nh-model-title">モデルハウス見学</h2>
-        <p class="nh-model-desc">実際の空間で、自然素材の心地よさを体感してください。</p>
-        <a href="/model-house/" class="nh-model-btn">詳しく見る</a>
-    </div>
-</section>
-
-    
-    <!-- 10. カタログセクション -->
-    <section class="nh-section nh-catalog-section">
-        <div class="nh-container">
-            <div class="nh-sec-header-row">
-                <div class="nh-sec-header nh-fade-up">
-                    <span class="nh-sec-title-en">Catalog</span>
-                    <h2 class="nh-sec-title-jp">カタログ請求</h2>
-                </div>
-            </div>
-            <div class="nh-catalog-layout nh-fade-up">
-                <div class="nh-catalog-img">
-                    <img src="https://www.natural-space.jp/wp-content/themes/fast-mirai/img/top/catalog-img-1.jpg" alt="カタログ">
-                </div>
-                <div class="nh-catalog-content">
-                    <h3 class="nh-catalog-title">無料カタログプレゼント</h3>
-                    <p class="nh-catalog-desc">
-                        ナチュラルワークスの家づくりがわかるカタログを<br>
-                        無料でお届けいたします。<br>
-                        施工事例や素材のこだわりなど、詳しくご紹介しています。
-                    </p>
-                    <a href="/catalog/" class="nh-btn">カタログ請求</a>
-                </div>
-            </div>
-        </div>
-    </section>
     
     <!-- 11. Topics & COLUMN -->
     <section class="topics-sec">
