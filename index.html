@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Noto+Sans+JP:wght@300;400;500;600&family=Noto+Serif+JP:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing Script&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=EB+Garamond:wght@400;500&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
     
     <!-- Swiper CSS -->
@@ -71,60 +72,90 @@
     }
     
     /* ========== ヘッダー ========== */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--nh-color-border);
+    padding: 20px 40px;
+}
+
+.site-header .header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    min-height: 50px;
+}
+
+/* ヘッダーロゴ画像 */
+.site-header .logo {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.site-header .logo img {
+    height: 50px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+    filter: brightness(0);  /* 黒色に変換 */
+}
+
+.site-header nav ul {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+.site-header nav a {
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    color: var(--nh-color-text-light);
+}
+
+.site-header nav a:hover {
+    color: var(--nh-color-accent);
+}
+
+.site-header .header-contact {
+    background: var(--nh-color-text);
+    color: #fff;
+    padding: 10px 25px;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    transition: all 0.3s;
+    flex-shrink: 0;
+}
+
+.site-header .header-contact:hover {
+    background: var(--nh-color-accent);
+}
+
+@media (max-width: 768px) {
     .site-header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        z-index: 1000;
-        background: rgba(255,255,255,0.95);
-        backdrop-filter: blur(10px);
-        border-bottom: 1px solid var(--nh-color-border);
-        padding: 15px 40px;
-    }
-    .site-header .header-inner {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        max-width: 1400px;
-        margin: 0 auto;
-    }
-    .site-header .logo {
-        font-family: var(--nh-font-en);
-        font-size: 1.5rem;
-        font-weight: 400;
-        letter-spacing: 0.1em;
-        color: var(--nh-color-text);
-    }
-    .site-header nav ul {
-        display: flex;
-        gap: 30px;
-        list-style: none;
-    }
-    .site-header nav a {
-        font-size: 0.85rem;
-        letter-spacing: 0.05em;
-        color: var(--nh-color-text-light);
-    }
-    .site-header nav a:hover {
-        color: var(--nh-color-accent);
-    }
-    .site-header .header-contact {
-        background: var(--nh-color-text);
-        color: #fff;
-        padding: 10px 25px;
-        font-size: 0.85rem;
-        letter-spacing: 0.05em;
-        transition: all 0.3s;
-    }
-    .site-header .header-contact:hover {
-        background: var(--nh-color-accent);
+        padding: 15px 20px;
     }
     
-    @media (max-width: 768px) {
-        .site-header { padding: 12px 20px; }
-        .site-header nav { display: none; }
+    .site-header .header-inner {
+        min-height: 40px;
     }
+    
+    .site-header nav {
+        display: none;
+    }
+    
+    .site-header .logo img {
+        height: 40px;
+    }
+}
+
     
     /* ========== FVセクション（Swiper） ========== */
     .page-top .fv-sec {
@@ -629,21 +660,22 @@
     }
 
     
-    /* ========== コンセプトセクション（背景画像版） ========== */
+/* ========== コンセプトセクション（背景画像版・オーバーラップ） ========== */
 .page-top .nh-concept-section {
     position: relative;
-    padding: 150px 0;
-    overflow: hidden;
-    min-height: 80vh;
-    display: flex;
-    align-items: center;
+    min-height: 100vh;
     background-image: url('https://www.natural-space.jp/wp-content/themes/fast-mirai/img/top/concept-img-1-02.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 80px 0;
 }
 
-/* オーバーレイ */
+/* オーバーレイ（左側を暗く） */
 .page-top .nh-concept-section::before {
     content: "";
     position: absolute;
@@ -652,10 +684,10 @@
     width: 100%;
     height: 100%;
     background: linear-gradient(
-        135deg,
-        rgba(255,255,255,0.92) 0%,
-        rgba(255,255,255,0.80) 50%,
-        rgba(255,255,255,0.65) 100%
+        90deg,
+        rgba(0, 0, 0, 0.1) 0%,
+        rgba(0, 0, 0, 0) 40%,
+        rgba(255, 255, 255, 0.3) 100%
     );
     z-index: 1;
 }
@@ -664,125 +696,177 @@
 .page-top .nh-concept-bg-big {
     position: absolute;
     top: 50%;
-    left: -5%;
+    left: 5%;
     transform: translateY(-50%);
     font-family: var(--nh-font-en);
-    font-size: 12vw;
+    font-size: 10vw;
     font-weight: 300;
-    color: var(--nh-color-wood-pale);
-    opacity: 0.2;
+    color: #fff;
+    opacity: 0.15;
     white-space: nowrap;
     pointer-events: none;
     z-index: 2;
-    writing-mode: vertical-rl;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.05em;
 }
 
-/* コンテナを前面に */
-.page-top .nh-concept-section .nh-container {
+/* インナーコンテナ */
+.page-top .nh-concept-inner {
     position: relative;
     z-index: 3;
-}
-
-/* 元の画像を非表示 */
-.page-top .nh-concept-img-main {
-    display: none;
-}
-
-/* 左エリアのレイアウト調整 */
-.page-top .nh-concept-left-area {
-    flex: none;
-    position: relative;
-}
-
-/* 縦書きリードテキスト */
-.page-top .nh-concept-vertical-lead {
-    writing-mode: vertical-rl;
-    font-size: 2.5rem;
-    font-weight: 600;
-    line-height: 1.8;
-    letter-spacing: 0.15em;
-    color: var(--nh-color-text);
-    font-family: var(--nh-font-jp-serif);
-    position: relative;
-    background: rgba(255,255,255,0.85);
-    padding: 40px 20px;
-    margin: 0;
-    white-space: nowrap;
-    border-radius: 4px;
-}
-
-/* レイアウト変更 */
-.page-top .nh-concept-layout-v2 {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
     display: flex;
-    align-items: center;
-    gap: 60px;
+    justify-content: flex-end;
+}
+
+/* テキストエリア（右側に配置・背景に重なる） */
+.page-top .nh-concept-right {
+    width: 45%;
+    max-width: 550px;
+    padding: 80px 60px;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: -20px 20px 60px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(5px);
+}
+
+/* タイトル */
+.page-top .nh-concept-title {
+    margin-bottom: 30px;
+}
+
+.page-top .nh-concept-title-sub {
+    display: inline-block;
+    font-family: var(--nh-font-en);
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    color: var(--nh-color-accent);
     position: relative;
-    z-index: 3;
+    padding-bottom: 15px;
 }
 
-/* テキストエリア */
-.page-top .nh-concept-text-area {
-    flex: 1;
-    background: rgba(255,255,255,0.9);
-    padding: 50px 40px;
-    border-radius: 8px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+.page-top .nh-concept-title-sub::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 30px;
+    height: 1px;
+    background: var(--nh-color-accent);
 }
 
-.page-top .nh-concept-desc-fix {
-    font-size: 1.05rem;
+/* キャッチコピー */
+.page-top .nh-concept-catch {
+    font-family: var(--nh-font-jp-serif);
+    font-size: 2.2rem;
+    font-weight: 500;
+    line-height: 1.8;
+    letter-spacing: 0.08em;
+    color: var(--nh-color-text);
+    margin: 0 0 40px;
+    padding-left: 20px;
+    border-left: 3px solid var(--nh-color-accent);
+}
+
+/* 説明文 */
+.page-top .nh-concept-description {
+    margin-bottom: 40px;
+}
+
+.page-top .nh-concept-description p {
+    font-size: 0.95rem;
     line-height: 2.2;
     color: var(--nh-color-text);
-    margin: 0;
+    margin: 0 0 1.5em;
+    letter-spacing: 0.03em;
 }
 
-/* レスポンシブ */
+.page-top .nh-concept-description p:last-child {
+    margin-bottom: 0;
+}
+
+/* ボタン */
+.page-top .nh-concept-link {
+    text-align: left;
+}
+
+/* ========== レスポンシブ ========== */
+@media (max-width: 1200px) {
+    .page-top .nh-concept-right {
+        width: 50%;
+        padding: 60px 50px;
+    }
+}
+
 @media (max-width: 960px) {
     .page-top .nh-concept-section {
-        padding: 100px 0;
         min-height: auto;
+        padding: 100px 0;
+        justify-content: center;
+        background-attachment: scroll;
     }
     
-    .page-top .nh-concept-layout-v2 {
-        flex-direction: column;
-        gap: 30px;
+    .page-top .nh-concept-inner {
+        justify-content: center;
     }
     
-    .page-top .nh-concept-vertical-lead {
-        writing-mode: horizontal-tb;
-        font-size: 1.6rem;
-        text-align: center;
-        padding: 20px 30px;
+    .page-top .nh-concept-right {
+        width: 85%;
+        max-width: 600px;
+        padding: 50px 40px;
     }
     
-    .page-top .nh-concept-text-area {
-        padding: 30px 25px;
+    .page-top .nh-concept-catch {
+        font-size: 1.8rem;
+    }
+    
+    .page-top .nh-concept-bg-big {
+        font-size: 15vw;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
 }
 
 @media (max-width: 768px) {
+    .page-top .nh-concept-section {
+        padding: 80px 0;
+    }
+    
+    .page-top .nh-concept-inner {
+        padding: 0 20px;
+    }
+    
+    .page-top .nh-concept-right {
+        width: 100%;
+        padding: 40px 25px;
+    }
+    
+    .page-top .nh-concept-catch {
+        font-size: 1.5rem;
+        line-height: 1.7;
+        padding-left: 15px;
+        margin-bottom: 30px;
+    }
+    
+    .page-top .nh-concept-description p {
+        font-size: 0.9rem;
+        line-height: 2;
+    }
+    
     .page-top .nh-concept-bg-big {
         font-size: 18vw;
         opacity: 0.1;
     }
-    
-    .page-top .nh-concept-vertical-lead {
-        font-size: 1.4rem;
-    }
-    
-    .page-top .nh-concept-desc-fix {
-        font-size: 0.95rem;
-        line-height: 2;
-    }
 }
+
 
     
 /* --------------------------------------------------
    ANDWELLセクション
    -------------------------------------------------- */
 .page-top .nh-andwell-section {
-    background: #f9f7f4;
+    background: #ffffff;
     padding: 120px 0;
     position: relative;
     overflow: hidden;
@@ -790,15 +874,16 @@
 }
 
 /* 上部の縦線 */
-.page-top .nh-vertical-line {
-    position: absolute;
-    left: 50%;
-    top: 0;
+.page-top .nh-spacer-line {
     width: 1px;
     height: 80px;
-    background: var(--nh-color-accent);
-    transform: translateX(-50%);
-}
+    background: linear-gradient(
+        180deg,
+        transparent 0%,
+        var(--nh-color-wood) 50%,
+        transparent 100%
+    );
+    }
 
 .page-top .nh-andwell-inner {
     max-width: 800px;
@@ -809,7 +894,7 @@
 /* キッカーテキスト */
 .page-top .nh-andwell-kicker {
     display: block;
-    font-size: 0.9rem;
+    font-size: 1.2rem;
     letter-spacing: 0.2em;
     color: var(--nh-color-accent);
     margin-bottom: 30px;
@@ -861,71 +946,98 @@
     to { opacity: 1; }
 }
 
-/* 本文エリア */
-.page-top .nh-andwell-body {
-    background: #fff;
-    padding: 50px;
-    border-radius: 4px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.05);
-    text-align: left;
+/* 本文エリア（B案：雑誌風レイアウト） */
+.page-top .nh-andwell-message {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto;
 }
 
-.page-top .nh-andwell-body p {
+.page-top .nh-andwell-catch {
+    font-size: 1.8rem;
+    font-weight: 500;
+    line-height: 1.6;
+    color: var(--nh-color-text);
+    margin-bottom: 40px;
+    font-family: var(--nh-font-jp-serif);
+    letter-spacing: 0.1em;
+}
+
+.page-top .nh-andwell-desc {
+    text-align: center;
+    display: inline-block;
+}
+
+.page-top .nh-andwell-desc p {
     font-size: 1rem;
     line-height: 2.2;
     color: var(--nh-color-text);
-    margin-bottom: 1.5em;
+    margin-bottom: 2em;
+    letter-spacing: 0.05em;
 }
 
-.page-top .nh-andwell-body p:last-child {
+.page-top .nh-andwell-desc p:last-child {
     margin-bottom: 0;
 }
 
-/* レスポンシブ */
+/* レスポンシブ用（既存のメディアクエリ @media (max-width: 768px) 内の .nh-andwell-body の代わりに追記してください） */
 @media (max-width: 768px) {
-    .page-top .nh-andwell-section {
-        padding: 80px 0;
+    .page-top .nh-andwell-catch {
+        font-size: 1.4rem;
+        margin-bottom: 30px;
+    }
+    .page-top .nh-andwell-desc p {
+        font-size: 0.95rem;
+        line-height: 2;
+    }
+}
+
+
+/* 2カラム説明文 */
+.page-top .nh-concept-desc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.page-top .nh-concept-desc-col {
+    padding: 25px 0;
+    border-top: 1px solid var(--nh-color-wood-pale);
+}
+
+.page-top .nh-concept-desc-col p {
+    font-size: 1rem;
+    line-height: 2.2;
+    color: var(--nh-color-text);
+    margin: 0;
+}
+
+/* レスポンシブ：タブレット以下は1カラムに */
+@media (max-width: 960px) {
+    .page-top .nh-concept-desc-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-top .nh-concept-desc-col {
+        padding: 20px 0;
     }
     
-    .page-top .nh-vertical-line {
-        height: 50px;
-    }
-    
-    .page-top .nh-andwell-kicker {
-        font-size: 0.8rem;
-    }
-    
-    .page-top .nh-andwell-svg-logo {
-        max-width: 90%;
-    }
-    
-    .page-top .nh-andwell-body {
-        padding: 30px 20px;
-    }
-    
-    .page-top .nh-andwell-body p {
+    .page-top .nh-concept-desc-col p {
         font-size: 0.95rem;
         line-height: 2;
     }
 }
 
     
-   /* --------------------------------------------------
-   FEATUREセクション（モデルハウス風）
-   -------------------------------------------------- */
+   /* Featureセクション */
 .page-top .nh-feature-section {
     background: #fff;
     padding: 0 !important;
     margin: 0 !important;
-}
-
-.page-top .nh-feature-section .nh-container {
-    padding: 80px 40px 40px;
-}
-
-.page-top .nh-feature-section .nh-sec-header {
-    margin-bottom: 0;
-    padding: 0;
 }
 
 .page-top .nh-feature-list {
@@ -933,21 +1045,15 @@
     padding: 0;
 }
 
-/* 各アイテム - モデルハウス風 */
+/* 各Featureアイテム - 1画面表示 */
 .page-top .nh-feature-item {
     position: relative;
-    height: 500px;
+    height: 100vh;           /* 画面の高さいっぱい */
+    min-height: 600px;       /* 最小高さ */
+    max-height: 900px;       /* 最大高さ（任意） */
+    overflow: hidden;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
-}
-
-/* 偶数アイテムは右寄せ */
-.page-top .nh-feature-item:nth-child(even) {
-    justify-content: flex-end;
 }
 
 /* 背景画像 */
@@ -961,106 +1067,75 @@
     z-index: 0;
 }
 
-/* オーバーレイ（左から右へグラデーション） */
+/* オーバーレイ */
 .page-top .nh-feature-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-        90deg,
-        rgba(255,255,255,0.9) 0%,
-        rgba(255,255,255,0.6) 40%,
-        transparent 70%
-    );
+    background: linear-gradient(90deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.6) 40%, transparent 70%);
     z-index: 1;
+    pointer-events: none;
 }
 
-/* 偶数アイテムはオーバーレイを反転 */
+/* 偶数アイテム - 右からのグラデーション */
 .page-top .nh-feature-item:nth-child(even) .nh-feature-overlay {
-    background: linear-gradient(
-        270deg,
-        rgba(255,255,255,0.9) 0%,
-        rgba(255,255,255,0.6) 40%,
-        transparent 70%
-    );
+    background: linear-gradient(270deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.6) 40%, transparent 70%);
 }
 
-/* コンテンツエリア */
+/* コンテンツ */
 .page-top .nh-feature-content {
     position: relative;
     z-index: 2;
-    max-width: 450px;
-    padding: 40px;
-    margin-left: 80px;
-    background: transparent;
-    box-shadow: none;
-    border-radius: 0;
+    padding: 0 80px;
+    max-width: 600px;
 }
 
-/* 偶数アイテムは右寄せ */
 .page-top .nh-feature-item:nth-child(even) .nh-feature-content {
-    margin-left: 0;
-    margin-right: 80px;
+    margin-left: auto;
     text-align: right;
 }
 
-.page-top .nh-feature-num {
-    font-family: var(--nh-font-en);
-    font-size: 0.85rem;
-    letter-spacing: 0.15em;
-    color: var(--nh-color-accent);
-    margin-bottom: 10px;
-}
-
+/* Featureタイトル（大きく） */
 .page-top .nh-feature-title {
-    font-size: 1.8rem;
-    font-weight: 500;
-    margin-bottom: 15px;
+    font-size: 3rem;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.1em;
+    margin-bottom: 25px;
     color: var(--nh-color-text);
 }
 
-.page-top .nh-feature-desc {
-    font-size: 1rem;
-    line-height: 1.9;
-    color: var(--nh-color-text);
-    margin: 0;
+/* Featureボタン */
+.page-top .nh-feature-btn {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: var(--nh-color-accent);
+    border: 1px solid var(--nh-color-accent);
+    padding: 10px 30px;
+    margin-top: 25px;
+    transition: all 0.3s;
+    text-decoration: none;
+    background: rgba(255,255,255,0.9);
 }
 
-/* 元の画像ボックスを非表示 */
-.page-top .nh-feature-img-box {
-    display: none;
+.page-top .nh-feature-btn:hover {
+    background: var(--nh-color-accent);
+    color: #fff;
 }
 
 /* レスポンシブ */
-@media (max-width: 960px) {
+@media (max-width: 768px) {
     .page-top .nh-feature-item {
-        height: 450px;
+        height: 100vh;
+        min-height: 500px;
+        max-height: none;
     }
     
     .page-top .nh-feature-content {
-        margin-left: 40px;
-        max-width: 400px;
-    }
-    
-    .page-top .nh-feature-item:nth-child(even) .nh-feature-content {
-        margin-right: 40px;
-    }
-}
-
-@media (max-width: 768px) {
-    .page-top .nh-feature-section .nh-container {
-        padding: 60px 20px 30px;
-    }
-    
-    .page-top .nh-feature-item {
-        height: 400px;
-        justify-content: center;
-    }
-    
-    .page-top .nh-feature-item:nth-child(even) {
-        justify-content: center;
+        padding: 0 30px;
+        max-width: 100%;
     }
     
     .page-top .nh-feature-overlay {
@@ -1071,27 +1146,23 @@
         background: rgba(255,255,255,0.85);
     }
     
-    .page-top .nh-feature-content {
-        margin: 0 20px;
-        padding: 30px;
-        text-align: center;
-        max-width: none;
-    }
-    
     .page-top .nh-feature-item:nth-child(even) .nh-feature-content {
-        margin: 0 20px;
-        text-align: center;
+        margin-left: 0;
+        text-align: left;
     }
     
-    .page-top .nh-feature-title {
-        font-size: 1.4rem;
+      .page-top .nh-feature-title {
+        font-size: 1.8rem;
+        line-height: 1.6;
     }
     
-    .page-top .nh-feature-desc {
-        font-size: 0.95rem;
-        line-height: 1.8;
+      .page-top .nh-feature-btn {
+        margin-top: 20px;
+        padding: 8px 25px;
+        font-size: 0.8rem;
     }
 }
+
 
     /* ========== セクション間スペーサー（共通） ========== */
 .page-top .nh-section-spacer {
@@ -1197,25 +1268,21 @@
         .page-top .nh-works-grid { grid-template-columns: 1fr; }
     }
     
-    /* ========== セクション間スペーサー ========== */
-.page-top .nh-section-spacer {
-    background: var(--nh-color-bg);
-    padding: 80px 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    
+    /* ========== モデルハウスセクション前の特大スペーサー ========== */
+.page-top .nh-spacer-model {
+    /* 三角屋根が上に食い込む分を考慮して、通常(80px)よりガッツリ余白を取ります */
+    padding: 160px 0; 
 }
 
-.page-top .nh-spacer-line {
-    width: 1px;
-    height: 80px;
-    background: linear-gradient(
-        180deg,
-        transparent 0%,
-        var(--nh-color-wood) 50%,
-        transparent 100%
-    );
+/* レスポンシブ（スマホ表示） */
+@media (max-width: 768px) {
+    .page-top .nh-spacer-model {
+        /* スマホは屋根の角度が急な分、さらに余白を確保します */
+        padding: 130px 0;
+    }
 }
+
 /* ========== モデルハウスセクション ========== */
 .page-top .nh-model-section {
     position: relative;
@@ -1226,6 +1293,10 @@
     text-align: center;
     color: #fff;
     overflow: hidden;
+    clip-path: polygon(50% 0%, 100% 8vw, 100% 100%, 0% 100%, 0% 8vw);
+    margin-top: -8vw; /* 屋根の高さ分だけ上に重ねて隙間を消します */
+    z-index: 10;
+    padding-top: 4vw; /* テキストが屋根の斜め部分に被らないように余白を足します */
 }
 
 .page-top .nh-model-bg {
@@ -1334,34 +1405,32 @@
     left: 0;
 }
 
-/* レスポンシブ */
+/* レスポンシブ（スマホ表示） */
 @media (max-width: 768px) {
     .page-top .nh-model-section {
         height: auto;
         min-height: 550px;
-        padding: 70px 0;
+        padding: 90px 0 70px;
+        /* スマホ画面では屋根の角度を少しシャープにします */
+        clip-path: polygon(50% 0%, 100% 12vw, 100% 100%, 0% 100%, 0% 12vw);
+        margin-top: -12vw;
     }
     
     .page-top .nh-model-title {
         font-size: 1.8rem;
         margin-bottom: 30px;
     }
-    
     .page-top .nh-model-concept-box {
         margin-bottom: 30px;
     }
-    
     .page-top .nh-model-concept-text {
         font-size: 0.9rem;
         line-height: 2;
     }
-    
     .page-top .nh-model-btn {
         padding: 15px 45px;
     }
 }
-
-
     
     /* ========== カタログセクション ========== */
     .page-top .nh-catalog-section {
@@ -1776,6 +1845,53 @@
         .page-top .nh-cta-section-links { flex-direction: column; gap: 15px; align-items: center; }
     }
     
+    /* CTAカードボタン */
+.page-top .nh-cta-section-card .nh-cta-card-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 0.95rem;
+    color: #fff;
+    background: #3A3A3A;
+    border: 1px solid var(--nh-color-accent);
+    padding: 15px 40px;
+    text-decoration: none;
+    transition: all 0.3s;
+    letter-spacing: 0.1em;
+}
+
+.page-top .nh-cta-section-card .nh-cta-card-btn:hover {
+    background: transparent;
+    color: var(--nh-color-accent);
+}
+
+/* 矢印アイコン */
+.page-top .nh-cta-section-card .nh-cta-card-btn .arrow {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid #fff;
+    border-right: 2px solid #fff;
+    transform: rotate(45deg);
+    transition: all 0.3s;
+}
+
+.page-top .nh-cta-section-card .nh-cta-card-btn:hover .arrow {
+    border-color: var(--nh-color-accent);
+    transform: rotate(45deg) translateX(3px);
+}
+
+/* レスポンシブ */
+@media (max-width: 768px) {
+    .page-top .nh-cta-section-card .nh-cta-card-btn {
+        padding: 12px 30px;
+        font-size: 0.85rem;
+        width: 100%;
+    }
+}
+
+    
     /* ========== フッター ========== */
 .site-footer {
     background: var(--nh-color-text);
@@ -1870,7 +1986,9 @@
 <!-- ヘッダー -->
 <header class="site-header">
     <div class="header-inner">
-        <a href="/" class="logo">Natural Works</a>
+        <a href="/" class="logo">
+            <img src="img/logo-white.webp" alt="Natural Works">
+        </a>
         <nav class="nh-pc-only">
             <ul>
                 <li><a href="/concept/">コンセプト</a></li>
@@ -1992,51 +2110,33 @@
     </div>
 </section>
 
+   
     
-    <!-- 3. イントロメッセージ -->
-    <section class="nh-intro-message nh-fade-up">
-        <p>
-            自然の恵みを感じながら、<br>
-            家族がつながり、心が安らぐ住まいを。<br>
-            ナチュラルワークスは、そんな暮らしをご提案します。
-        </p>
-    </section>
-    
-    <!-- 4. コンセプトセクション -->
-    <section class="nh-section nh-concept-section">
-        <div class="nh-concept-bg-big">Concept</div>
-        <div class="nh-container">
-            <div class="nh-sec-header-row">
-                <div class="nh-sec-header nh-fade-up">
-                    <span class="nh-sec-title-en">Concept</span>
-                    <h2 class="nh-sec-title-jp">コンセプト</h2>
-                </div>
+  <!-- 4. コンセプトセクション -->
+<section class="nh-section nh-concept-section">
+    <div class="nh-concept-inner">
+        <div class="nh-concept-right nh-fade-up">
+
+            <h2 class="nh-concept-catch">まだ見ぬ未来の<br>暮らしをつくる</h2>
+            <div class="nh-concept-description">
+                <p>家づくりを通じて、<br>家族の幸せな未来をつくるために。</p>
+                <p>NaturalWorksは、<br>お客様ひとり一人の「想い」を大切に、カタチにしていきます。<br>ただ建てるだけではない、その先の物語を共に描くために。</p>
             </div>
-            <div class="nh-concept-layout-v2">
-                <div class="nh-concept-left-area nh-fade-up">
-                    <h3 class="nh-concept-vertical-lead">まだ見ぬ未来の暮らしをつくる</h3>
-                    <img src="https://www.natural-space.jp/wp-content/themes/fast-mirai/img/top/concept-img-1-02.jpg" alt="コンセプトイメージ" class="nh-concept-img-main">
-                </div>
-                <div class="nh-concept-text-area nh-fade-up">
-                    <p class="nh-concept-desc-fix">
-                        家づくりを通じて、家族の幸せな未来をつくるために。<br>
-                        ナチュラルワークスは、お客様ひとり一人の「想い」を大切に、カタチにしていきます。<br>
-                        ただ建てるだけではない、その先の物語を共に描くために。
-                    </p>
-                    <div class="nh-btn-wrap" style="text-align: left; margin-top: 30px;">
-                        <a href="/concept/" class="nh-btn">Read Concept</a>
-                    </div>
-                </div>
+            <div class="nh-concept-link">
+                <a href="/concept/" class="nh-event-btn">コンセプトを見る</a>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
+
     
     <!-- 5. ANDWELLセクション -->
 <section class="nh-section nh-andwell-section">
     <div class="nh-vertical-line"></div>
     <div class="nh-container">
         <div class="nh-andwell-inner">
-            <span class="nh-andwell-kicker nh-fade-up">ナチュラルワークスの自由設計住宅</span>
+            <span class="nh-andwell-kicker nh-fade-up">NATURAL WORKSの自由設計住宅</span>
             <div class="nh-andwell-logo-wrap nh-fade-up">
                 <svg class="nh-andwell-svg-logo" id="andwellSvg" viewBox="0 0 700 200" xmlns="http://www.w3.org/2000/svg" aria-label="Andwell">
      
@@ -2067,43 +2167,40 @@
     </text>
 </svg>
             </div>
-            <div class="nh-andwell-body nh-fade-up">
-                <p>
-                    私たちは、単なる「家」を売るのではありません。<br>
-                    川口市の風土に根ざし、ご家族の「未来の暮らし方」そのものをご提案します。<br>
-                    設計士、建築家、そして現場の職人までがお客様の想いを共有する「チーム」となり、対話を重ねることで、理想の住まいを形にします。
-                </p>
-                <p>
-                    私たちが得意とするのは、太陽の光や風といった自然1の恵みを最大限に活かす「パッシブデザイン」。地域の特性を知り尽くしているからこそ、エネルギーに頼りすぎずとも夏は涼しく、冬は暖かい、快適な空間を実現できるのです。
-                </p>
-            </div>
-        </div>
+            <div class="nh-andwell-message nh-fade-up">
+    <h3 class="nh-andwell-catch">
+        私たちは、<br>単なる「家」を<br class="nh-sp-only">売るのではありません。
+    </h3>
+    <div class="nh-andwell-desc">
+        <p>
+            川口市の風土に根ざし、ご家族の「未来の暮らし方」そのものをご提案します。<br>
+            設計士、建築家、そして現場の職人までがお客様の想いを共有するチームとなり、<br>
+           対話を重ねることで、理想の住まいを形にします。
+        </p>
+        <p>
+            私たちが得意とするのは、<br>太陽の光や風といった自然の恵みを最大限に活かすパッシブデザイン。<br>
+            地域の特性を知り尽くしているからこそ、<br>エネルギーに頼りすぎずとも夏は涼しく、冬は暖かい、快適な空間を実現できるのです。
+        </p>
+    </div>
+</div>
     </div>
 </section>
 
     
-    <!-- 6. Featureセクション -->
+<!-- 6. Featureセクション -->
 <section class="nh-section nh-feature-section">
-    <div class="nh-container">
-        <div class="nh-sec-header nh-fade-up">
-            <span class="nh-sec-title-en">Feature</span>
-            <h2 class="nh-sec-title-jp">私たちの特徴</h2>
-        </div>
-    </div>
-    
     <div class="nh-feature-list">
         <!-- Feature 01 -->
         <div class="nh-feature-item nh-fade-up">
             <img src="img/gallery06_01.png" alt="自然素材" class="nh-feature-bg">
             <div class="nh-feature-overlay"></div>
             <div class="nh-feature-content">
-                <p class="nh-feature-num">Feature 01</p>
-                <h3 class="nh-feature-title">建築家と建てる<br>
-理想の家づくり</h3>
+                <h3 class="nh-feature-title">建築家と建てる<br>理想の家づくり</h3>
                 <p class="nh-feature-desc">
-                    建築家とのタイアップにより、
+                    建築家とのタイアップにより、<br>
 お客様の思い描いた素敵なお家を設計します。
                 </p>
+                <a href="/feature/architect/" class="nh-feature-btn">詳しく見る</a>
             </div>
         </div>
         
@@ -2112,23 +2209,22 @@
             <img src="img/event-img-1.png" alt="パッシブデザイン" class="nh-feature-bg">
             <div class="nh-feature-overlay"></div>
             <div class="nh-feature-content">
-                <p class="nh-feature-num">Feature 02</p>
-                <h3 class="nh-feature-title">家族の未来を想う<br>
-家づくり</h3>
+                <h3 class="nh-feature-title">家族の未来を想う<br>家づくり</h3>
                 <p class="nh-feature-desc">
-                    暮らしは、日常という想い出を積み重ねてつくられていくもの。
-五感を満たすことで日常をより<br>幸せな時間へと誘います。
+                    暮らしは
+                   <br>日常という想い出を積み重ねてつくられていくもの。
+<br>五感を満たすことで日常をより幸せな時間へと誘います。
                 </p>
+                <a href="/feature/family/" class="nh-feature-btn">詳しく見る</a>
             </div>
         </div>
     </div>
 </section>
 
-
-    <!-- モデルハウスセクション前のスペーサー -->
-<div class="nh-section-spacer">
-    <div class="nh-spacer-line"></div>
+ <!-- 特徴〜施工事例間のスペーサー -->
+<div class="nh-section-spacer nh-spacer-model">
 </div>
+
 
 <!-- 9. モデルハウスセクション -->
 <section class="nh-model-section">
@@ -2269,8 +2365,8 @@
         </div>
     </a>
 </div>
-</div> 
-</section>
+</div>
+    </section>
 
     
     <!-- 12. CONTACT CTAセクション -->
@@ -2293,7 +2389,7 @@
                 </div>
                 <div class="nh-cta-section-card">
                     <p class="nh-cta-section-card-title">お電話からのお問い合わせ</p>
-                    <p class="nh-cta-card-tel"><a href="tel:0480000000">048-000-0000</a></p>
+                    <p class="nh-cta-card-tel"><a href="tel:0120-600-803">0120-600-803</a></p>
                     <div class="nh-cta-card-line"></div>
                     <p class="nh-cta-card-time">受付 9:00〜17:30 ／ 定休：水曜</p>
                 </div>
@@ -2311,16 +2407,20 @@
         </div>
     </section>
     
-</div><!-- /.page-top -->
+    </div><!-- /.page-top -->
+
+    
 
 <!-- フッター -->
 <footer class="site-footer">
     <div class="footer-inner">
         <div class="footer-info">
-            <p class="footer-logo">Natural Works</p>
+            <a href="/" class="footer-logo">
+                <img src="img/logo-white.webp" alt="Natural Works">
+            </a>
             <address class="footer-address">
-                〒340-0000 埼玉県草加市○○町0-0-0<br>
-                TEL: 048-000-0000
+                <br>〒340-0056 埼玉県草加市新栄3-13-15<br>
+TEL：0120-600-803
             </address>
         </div>
         <nav class="footer-nav nh-pc-only">
