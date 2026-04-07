@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>イベント詳細ページ｜プレビュー</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================
+       リセット・ベース
+       ========================================================== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Shippori Mincho', serif;
+      color: #3a3a3a;
+      background: #fafaf8;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.3s ease;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    ul, ol {
+      list-style: none;
+    }
+
+    li::before,
+    li::marker {
+      content: none;
+      display: none;
+    }
+
+    table {
+      table-layout: fixed;
+      width: 100%;
+      max-width: 100%;
+      word-break: break-word;
+    }
+
+    iframe {
+      max-width: 100%;
+    }
+
+
+    /* ==========================================================
+       ヘッダー（プレビュー用ダミー）
+       ========================================================== */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(255,255,255,0.98);
+      border-bottom: 1px solid #e5e0d8;
+      padding: 15px 40px;
+    }
+
+    .site-header__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .site-header__logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      color: #3a3a3a;
+    }
+
+    .site-header__nav {
+      display: flex;
+      gap: 30px;
+    }
+
+    .site-header__nav a {
+      font-size: 0.85rem;
+      color: #6b6b6b;
+    }
+
+    .site-header__nav a:hover {
+      color: #3a3a3a;
+    }
+
+    .site-header__hamburger {
+      display: none;
+    }
+
+    @media (max-width: 960px) {
+      .site-header__nav { display: none; }
+      .site-header__hamburger { display: block; }
+    }
+
+
+    /* ==========================================================
+       ヒーロー
+       ========================================================== */
+    .ev-hero {
+      margin-top: 60px;
+    }
+
+    .ev-hero__inner {
+      position: relative;
+      height: 400px;
+      overflow: hidden;
+    }
+
+    .ev-hero__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .ev-hero__overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.4);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+    }
+
+    .ev-hero__label-en {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.3em;
+      margin-bottom: 10px;
+    }
+
+    .ev-hero__label-ja {
+      font-size: 2rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+    }
+
+    @media (max-width: 768px) {
+      .ev-hero__inner { height: 300px; }
+      .ev-hero__label-ja { font-size: 1.5rem; }
+    }
+
+
+    /* ==========================================================
+       ボディ（メインエリア）
+       ========================================================== */
+    .ev-body {
+      padding: 60px 0;
+    }
+
+    .ev-body__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .ev-body__grid {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 50px;
+      align-items: start;
+    }
+
+    @media (max-width: 1100px) {
+      .ev-body__grid {
+        grid-template-columns: 1fr 280px;
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 960px) {
+      .ev-body__grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+      .ev-body__inner { padding: 0 20px; }
+    }
+
+    .ev-body__main {
+      min-width: 0;
+    }
+
+
+    /* ==========================================================
+       リード文
+       ========================================================== */
+    .ev-lead {
+      background: #f5f5f5;
+      padding: 20px 25px;
+      border-radius: 4px;
+      margin-bottom: 40px;
+      border-left: 3px solid #3a3a3a;
+    }
+
+    .ev-lead__cta {
+      font-size: 0.95rem;
+      margin: 0;
+    }
+
+    .ev-lead__cta a {
+      color: #3a3a3a;
+      font-weight: 600;
+      border-bottom: 1px solid #3a3a3a;
+    }
+
+
+    /* ==========================================================
+       ページタイトル
+       ========================================================== */
+    .ev-page-title {
+      font-size: 1.8rem;
+      font-weight: 600;
+      line-height: 1.6;
+      margin-bottom: 60px;
+      color: #3a3a3a;
+    }
+
+    @media (max-width: 768px) {
+      .ev-page-title { font-size: 1.4rem; }
+    }
+
+
+    /* ==========================================================
+       セクション・見出し装飾 ★ h2 黒基調に変更
+       ========================================================== */
+    .ev-section {
+      margin-bottom: 80px;
+    }
+
+    .sec-heading {
+      margin-bottom: 35px;
+    }
+
+    .sec-heading__en {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      color: #888;
+      margin-bottom: 8px;
+    }
+
+    /* ★ h2 見出し：黒背景・白文字 */
+    .sec-heading__ja,
+    .ev-cf-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 0;
+      color: #fff;
+      padding: 14px 20px;
+      background: #2a2a2a;
+      border-left: none;
+      border-bottom: none;
+      letter-spacing: 0.04em;
+    }
+
+    /* 予約フォーム見出し（中央寄せ版） */
+    .sec-heading--center .sec-heading__ja {
+      background: #2a2a2a;
+      color: #fff;
+      padding: 14px 40px;
+      display: inline-block;
+      position: relative;
+    }
+
+    .sec-heading--center .sec-heading__ja::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 3px;
+      background: #fff;
+      margin: 18px auto 0;
+    }
+
+    .ev-cf-title {
+      margin-bottom: 35px;
+    }
+
+
+    /* ==========================================================
+       テーブル ★ 項目列（th）を黒背景に変更
+       ========================================================== */
+    .ev-outline__table,
+    .ev-cf-row__text table {
+      width: 100%;
+      border-collapse: collapse;
+      border-top: none;
+      table-layout: fixed;
+    }
+
+    .ev-outline__table th,
+    .ev-outline__table td,
+    .ev-cf-row__text th,
+    .ev-cf-row__text td {
+      padding: 20px 15px;
+      border-bottom: 1px solid #dcd8d3;
+      text-align: left;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      word-break: break-word;
+    }
+
+    /* ★ th：黒背景・白文字 */
+    .ev-outline__table th,
+    .ev-cf-row__text th {
+      width: 25%;
+      background: #2a2a2a;
+      font-weight: 600;
+      color: #fff;
+      vertical-align: top;
+      border-bottom: 1px solid #444;
+    }
+
+    .ev-outline__table td,
+    .ev-cf-row__text td {
+      background: #fff;
+    }
+
+    @media (max-width: 768px) {
+      .ev-outline__table th,
+      .ev-outline__table td {
+        display: block;
+        width: 100%;
+      }
+      .ev-outline__table th {
+        border-bottom: none;
+        padding-bottom: 8px;
+      }
+      .ev-outline__table td {
+        padding-top: 8px;
+      }
+    }
+
+
+    /* ==========================================================
+       サムネイル・アクセス
+       ========================================================== */
+    .ev-outline__thumb {
+      margin-bottom: 30px;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .ev-outline__thumb img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+    }
+
+    .ev-access__info {
+      margin-bottom: 25px;
+    }
+
+    .ev-access__place {
+      font-size: 1.1rem;
+      margin-bottom: 5px;
+    }
+
+    .ev-access__note {
+      font-size: 0.9rem;
+      color: #6b6b6b;
+    }
+
+    .ev-access__map iframe {
+      border-radius: 4px;
+    }
+
+
+    /* ==========================================================
+       CF ブロック（左画像 + 右テキスト）
+       ========================================================== */
+    .ev-cf-block {
+      margin-bottom: 80px;
+    }
+
+    .ev-cf-row {
+      display: flex;
+      gap: 40px;
+      align-items: flex-start;
+    }
+
+    .ev-cf-row__img {
+      width: 45%;
+      flex-shrink: 0;
+    }
+
+    .ev-cf-row__img img {
+      width: 100%;
+      border-radius: 4px;
+    }
+
+    .ev-cf-row__text {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .ev-cf-row__text p {
+      margin-bottom: 1.5em;
+      line-height: 2;
+    }
+
+    .ev-cf-row__text p:last-child {
+      margin-bottom: 0;
+    }
+
+    .ev-cf-row__text h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 30px 0 15px;
+      padding-left: 10px;
+      border-left: 3px solid #3a3a3a;
+    }
+
+    .ev-cf-row__text h3:first-child {
+      margin-top: 0;
+    }
+
+    @media (max-width: 768px) {
+      .ev-cf-row {
+        flex-direction: column;
+        gap: 20px;
+      }
+      .ev-cf-row__img {
+        width: 100%;
+      }
+    }
+
+
+    /* ==========================================================
+       本文内 CTA ボタン
+       ========================================================== */
+    .ev-cta-inline {
+      text-align: center;
+      padding: 50px 30px;
+      margin: 80px 0;
+      background: #f5f5f5;
+      border: 1px solid #e0e0e0;
+    }
+
+    .ev-cta-inline__text {
+      font-size: 1.1rem;
+      color: #3a3a3a;
+      margin: 0 0 25px 0;
+      line-height: 1.9;
+      letter-spacing: 0.03em;
+    }
+
+    .ev-cta-inline__text span {
+      color: #3a3a3a;
+      font-weight: 700;
+    }
+
+    .ev-cta-inline__btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      min-width: 300px;
+      padding: 22px 50px;
+      background: #2a2a2a;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      transition: all 0.3s ease;
+    }
+
+    .ev-cta-inline__btn:hover {
+      background: #111;
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    }
+
+    @media (max-width: 768px) {
+      .ev-cta-inline {
+        padding: 40px 20px;
+        margin: 60px 0;
+      }
+      .ev-cta-inline__text { font-size: 1rem; }
+      .ev-cta-inline__btn {
+        min-width: auto;
+        width: 100%;
+        padding: 18px 35px;
+        font-size: 0.95rem;
+      }
+    }
+
+
+    /* ==========================================================
+       サイドバー
+       ========================================================== */
+    .ev-body__sidebar {
+      min-width: 0;
+    }
+
+    .ev-sidebar-sticky {
+      position: sticky;
+      top: 90px;
+    }
+
+    /* 目次 */
+    .ev-sidebar__toc {
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .ev-sidebar__toc-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      color: #888;
+      margin-bottom: 12px;
+    }
+
+    .ev-sidebar__toc-list li {
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .ev-sidebar__toc-list li:last-child {
+      border-bottom: none;
+    }
+
+    .ev-sidebar__toc-list a {
+      display: block;
+      padding: 10px 0;
+      font-size: 0.85rem;
+      color: #6b6b6b;
+      transition: all 0.3s ease;
+    }
+
+    .ev-sidebar__toc-list a:hover {
+      color: #3a3a3a;
+    }
+
+    .ev-sidebar__toc-list a.is-active {
+      color: #3a3a3a;
+      font-weight: 600;
+      padding-left: 10px;
+      border-left: 2px solid #3a3a3a;
+    }
+
+    /* イベント情報 */
+    .ev-sidebar__info {
+      background: #f5f5f5;
+      padding: 20px;
+      margin-bottom: 15px;
+    }
+
+    .ev-sidebar__info-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      line-height: 1.6;
+      margin-bottom: 15px;
+      color: #3a3a3a;
+    }
+
+    .ev-sidebar__meta {
+      font-size: 0.8rem;
+    }
+
+    .ev-sidebar__meta-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .ev-sidebar__meta-row dt {
+      width: 50px;
+      flex-shrink: 0;
+      color: #6b6b6b;
+    }
+
+    .ev-sidebar__meta-row dd {
+      flex: 1;
+      word-break: break-word;
+      margin-left: 0;
+    }
+
+    /* CTA ボタン */
+    .ev-sidebar__cta-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 15px;
+      background: #2a2a2a;
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .ev-sidebar__cta-btn:hover {
+      background: #111;
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    }
+
+    /* 電話 */
+    .ev-sidebar__tel {
+      text-align: center;
+      padding: 15px;
+      background: #fff;
+      border: 1px solid #e0e0e0;
+    }
+
+    .ev-sidebar__tel-label {
+      font-size: 0.75rem;
+      color: #6b6b6b;
+      margin-bottom: 6px;
+    }
+
+    .ev-sidebar__tel-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #3a3a3a;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .ev-sidebar__tel-time {
+      font-size: 0.7rem;
+      color: #888;
+      line-height: 1.4;
+    }
+
+    @media (max-width: 960px) {
+      .ev-body__sidebar {
+        order: -1;
+        margin-bottom: 40px;
+      }
+      .ev-sidebar-sticky {
+        position: static;
+      }
+    }
+
+
+    /* ==========================================================
+       予約セクション
+       ========================================================== */
+    .ev-reservation {
+      background: #eef0eb;
+      padding: 100px 0;
+    }
+
+    .ev-reservation__inner {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .sec-heading--center {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .ev-reservation__tel {
+      text-align: center;
+      margin-bottom: 50px;
+      padding: 30px;
+      background: #fff;
+      border: 1px solid #e0e0e0;
+    }
+
+    .ev-reservation__tel-heading {
+      font-size: 0.9rem;
+      color: #6b6b6b;
+      margin-bottom: 10px;
+    }
+
+    .ev-reservation__tel-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: #3a3a3a;
+    }
+
+    .ev-reservation__tel-time {
+      font-size: 0.8rem;
+      color: #888;
+      margin-top: 8px;
+    }
+
+    .ev-reservation__alert {
+      color: #b00;
+      font-size: 0.9rem;
+      margin-top: 15px;
+      font-weight: 500;
+    }
+
+    .ev-reservation__form-wrap {
+      background: #fff;
+      padding: 50px;
+      border: 1px solid #e0e0e0;
+    }
+
+    @media (max-width: 768px) {
+      .ev-reservation { padding: 60px 0; }
+      .ev-reservation__inner { padding: 0 20px; }
+      .ev-reservation__form-wrap { padding: 30px 20px; }
+    }
+
+
+    /* ==========================================================
+       フォーム
+       ========================================================== */
+    .ev-form__group {
+      margin-bottom: 25px;
+    }
+
+    .ev-form__label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 8px;
+      color: #3a3a3a;
+    }
+
+    .ev-form__req {
+      font-size: 0.7rem;
+      color: #fff;
+      background: #2a2a2a;
+      padding: 2px 8px;
+      margin-left: 8px;
+    }
+
+    .ev-form__opt {
+      font-size: 0.7rem;
+      color: #fff;
+      background: #a9a9a9;
+      padding: 2px 8px;
+      margin-left: 8px;
+    }
+
+    .ev-form__input,
+    .ev-form__select,
+    .ev-form__textarea {
+      width: 100%;
+      padding: 14px 16px;
+      font-size: 1rem;
+      font-family: inherit;
+      border: 1px solid #ddd;
+      background: #fff;
+      border-radius: 0;
+      -webkit-appearance: none;
+      transition: border-color 0.3s;
+    }
+
+    .ev-form__input:focus,
+    .ev-form__select:focus,
+    .ev-form__textarea:focus {
+      outline: none;
+      border-color: #3a3a3a;
+    }
+
+    .ev-form__row {
+      display: flex;
+      gap: 20px;
+    }
+
+    .ev-form__row--pair .ev-form__group {
+      flex: 1;
+    }
+
+    .ev-form__row--pair .ev-form__group--small {
+      flex: 0 0 150px;
+    }
+
+    .ev-form__row--half .ev-form__group {
+      flex: 1;
+    }
+
+    @media (max-width: 768px) {
+      .ev-form__row {
+        flex-direction: column;
+        gap: 0;
+      }
+      .ev-form__row--pair .ev-form__group--small {
+        flex: 1;
+      }
+    }
+
+    .ev-form__group--check {
+      margin-top: 30px;
+    }
+
+    .ev-form__check {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .ev-form__check input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: #2a2a2a;
+    }
+
+    .ev-form__check a {
+      color: #3a3a3a;
+      text-decoration: underline;
+    }
+
+    .ev-form__group--submit {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .ev-form__submit {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 300px;
+      padding: 22px 50px;
+      background: #2a2a2a;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 500;
+      font-family: inherit;
+      letter-spacing: 0.1em;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      transition: all 0.3s ease;
+    }
+
+    .ev-form__submit:hover {
+      background: #111;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    }
+
+
+    /* ==========================================================
+       フッター（プレビュー用ダミー）
+       ========================================================== */
+    .site-footer {
+      background: #2a2a2a;
+      color: #fff;
+      padding: 60px 40px 30px;
+    }
+
+    .site-footer__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .site-footer__logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 15px;
+    }
+
+    .site-footer__address {
+      font-size: 0.85rem;
+      opacity: 0.8;
+      margin-bottom: 25px;
+    }
+
+    .site-footer__nav {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+
+    .site-footer__nav a {
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+
+    .site-footer__nav a:hover {
+      opacity: 1;
+    }
+
+    .site-footer__copy {
+      font-size: 0.75rem;
+      opacity: 0.6;
+      padding-top: 25px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    @media (max-width: 768px) {
+      .site-footer { padding: 40px 20px 20px; }
+      .site-footer__nav { flex-direction: column; gap: 12px; }
+    }
+
+
+    /* ==========================================================
+       アニメーション
+       ========================================================== */
+    .anim-target {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .anim-target.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============================================================
+     ヘッダー（プレビュー用ダミー）
+     ============================================================ -->
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="#" class="site-header__logo">NATURAL WORKS</a>
+    <nav class="site-header__nav">
+      <a href="#">TOP</a>
+      <a href="#">見学会・イベント</a>
+      <a href="#">こだわりの家造り</a>
+      <a href="#">施工実績</a>
+      <a href="#">モデルハウス</a>
+      <a href="#">会社案内</a>
+    </nav>
+    <button class="site-header__hamburger" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+
+<!-- ============================================================
+     メインコンテンツ
+     ============================================================ -->
+<main>
+<div class="page-event">
+
+  <!-- ==================== ヒーロー ==================== -->
+  <section class="ev-hero">
+    <div class="ev-hero__inner">
+      <img
+        class="ev-hero__img"
+        src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1400&h=600&fit=crop"
+        alt="イベント詳細"
+      >
+      <div class="ev-hero__overlay">
+        <p class="ev-hero__label-en">EVENT</p>
+        <p class="ev-hero__label-ja">イベント詳細</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== 本文エリア ==================== -->
+  <section class="ev-body">
+    <div class="ev-body__inner">
+      <div class="ev-body__grid">
+
+        <!-- ===== 左カラム ===== -->
+        <div class="ev-body__main">
+
+          <!-- リード文 -->
+          <div class="ev-lead anim-target">
+            <p class="ev-lead__cta">
+              1分で予約完了！お申し込みは<a href="#reservation">一番下のフォーム</a>からお願いいたします。
+            </p>
+          </div>
+
+          <!-- タイトル -->
+          <h1 class="ev-page-title">
+            冬の空気が、家族の健康を左右する。<br>自然素材で整える、やさしい住まい。
+          </h1>
+
+          <!-- 概要 -->
+          <div class="ev-section scroll-section" id="sec-outline">
+            <div class="sec-heading anim-target">
+              <span class="sec-heading__en" aria-hidden="true">Outline</span>
+              <h2 class="sec-heading__ja">イベント概要</h2>
+            </div>
+            <div class="ev-outline__thumb anim-target">
+              <img
+                src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800&h=450&fit=crop"
+                alt="イベントサムネイル"
+              >
+            </div>
+            <table class="ev-outline__table">
+              <tbody>
+                <tr>
+                  <th>開催日</th>
+                  <td>2026年 1月17日（土）、18日（日）　予約制</td>
+                </tr>
+                <tr>
+                  <th>時間</th>
+                  <td>①10:00-11:30 ②13:00-14:30 ③17:00-18:30 ④19:00-20:30 ⑤要相談</td>
+                </tr>
+                <tr>
+                  <th>場所</th>
+                  <td>埼玉県越谷市東越谷5-14-4</td>
+                </tr>
+                <tr>
+                  <th>備考</th>
+                  <td>ご見学は予約制になっております。</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- 詳細 -->
+          <div class="ev-cf-block scroll-section" id="sec-detail">
+            <h2 class="ev-cf-title">数字ではなく、"体感"で確かめてほしいから</h2>
+            <div class="ev-cf-row">
+              <div class="ev-cf-row__img">
+                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop" alt="リビングイメージ">
+              </div>
+              <div class="ev-cf-row__text">
+                <p>冬は、空気が乾燥しやすく、子どもの喉や肌への負担が気になる季節です。暖房や加湿器で対策していても、「これで本当に大丈夫だろうか」と感じたことはありませんか。</p>
+                <p>自然素材を使った住まいは、湿度が高すぎる時には吸い、乾燥しすぎる時には放出する性質があります。機械に頼りすぎることなく、一年を通して空気の状態を穏やかに保ちやすいのが特長です。</p>
+                <p>モデルハウスでは、冬の室内の空気感や、自然素材ならではの居心地を実際に体感していただけます。ぜひ見学会で、「喉まで心地いい住まい」をお確かめください。</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- みどころ -->
+          <div class="ev-cf-block scroll-section" id="sec-features">
+            <h2 class="ev-cf-title">見学会のみどころ</h2>
+            <div class="ev-cf-row">
+              <div class="ev-cf-row__img">
+                <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&h=600&fit=crop" alt="自然素材">
+              </div>
+              <div class="ev-cf-row__text">
+                <h3>自然素材の調湿効果を体感</h3>
+                <p>珪藻土や無垢材が持つ調湿・消臭効果を、冬のリアルな環境でご体感いただけます。暖房をつけていても空気が乾きすぎない、自然素材ならではの心地よさをお確かめください。</p>
+
+                <h3>家族の健康を考えた設計</h3>
+                <p>小さなお子様がいるご家庭を想定した間取り設計。家事動線、収納計画、そして何より空気環境にこだわった住まいの形をご覧いただけます。</p>
+
+                <h3>家づくり相談も同時開催</h3>
+                <p>資金計画や土地探しのご相談も承ります。家づくりのプロが、お客様一人ひとりに寄り添ったアドバイスをいたします。</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- アクセス -->
+          <div class="ev-section scroll-section" id="sec-access">
+            <div class="sec-heading anim-target">
+              <span class="sec-heading__en" aria-hidden="true">Access</span>
+              <h2 class="sec-heading__ja">会場アクセス</h2>
+            </div>
+            <div class="ev-access__info anim-target">
+              <p class="ev-access__place"><strong>埼玉県越谷市東越谷5-14-4</strong></p>
+              <p class="ev-access__note">駐車場あり（無料）</p>
+            </div>
+            <div class="ev-access__map anim-target">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3228.5!2d139.79!3d35.88!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z5Z-8546J55yM6LaK6LC35biC!5e0!3m2!1sja!2sjp!4v1710000000000"
+                width="100%"
+                height="400"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div class="ev-cta-inline anim-target">
+            <p class="ev-cta-inline__text">
+              ご予約は下記フォームより<br>
+              <span>1分で完了</span>します
+            </p>
+            <a href="#reservation" class="ev-cta-inline__btn">
+              <span>今すぐ予約する</span>
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M9 3v12M5 11l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+
+        </div>
+        <!-- /.ev-body__main -->
+
+
+        <!-- ===== 右カラム（サイドバー） ===== -->
+        <aside class="ev-body__sidebar">
+          <div class="ev-sidebar-sticky">
+
+            <nav class="ev-sidebar__toc">
+              <p class="ev-sidebar__toc-title">CONTENTS</p>
+              <ul class="ev-sidebar__toc-list">
+                <li><a href="#sec-outline" class="toc-link">イベント概要</a></li>
+                <li><a href="#sec-detail" class="toc-link">イベント詳細</a></li>
+                <li><a href="#sec-features" class="toc-link">見学会のみどころ</a></li>
+                <li><a href="#sec-access" class="toc-link">会場アクセス</a></li>
+                <li><a href="#reservation" class="toc-link">ご予約フォーム</a></li>
+              </ul>
+            </nav>
+
+            <div class="ev-sidebar__info">
+              <h3 class="ev-sidebar__info-title">
+                冬の空気が、家族の健康を左右する。自然素材で整える、やさしい住まい。
+              </h3>
+              <dl class="ev-sidebar__meta">
+                <div class="ev-sidebar__meta-row">
+                  <dt>開催日</dt>
+                  <dd>2026年 1月17日（土）、18日（日）</dd>
+                </div>
+                <div class="ev-sidebar__meta-row">
+                  <dt>時間</dt>
+                  <dd>①10:00- ②13:00- ③17:00- ④19:00- ⑤要相談</dd>
+                </div>
+                <div class="ev-sidebar__meta-row">
+                  <dt>場所</dt>
+                  <dd>埼玉県越谷市東越谷5-14-4</dd>
+                </div>
+              </dl>
+            </div>
+
+            <a href="#reservation" class="ev-sidebar__cta-btn">
+              <span>このイベントを予約する</span>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M7 2v10M3 8l4 4 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+
+            <div class="ev-sidebar__tel">
+              <p class="ev-sidebar__tel-label">お電話でのご予約</p>
+              <a href="tel:0120600803" class="ev-sidebar__tel-num">0120-600-803</a>
+              <p class="ev-sidebar__tel-time">受付 9:00〜18:00<br>定休日 日曜日</p>
+            </div>
+
+          </div>
+        </aside>
+
+      </div>
+      <!-- /.ev-body__grid -->
+    </div>
+  </section>
+
+
+  <!-- ==================== 予約フォーム ==================== -->
+  <section class="ev-reservation scroll-section" id="reservation">
+    <div class="ev-reservation__inner">
+
+      <div class="sec-heading sec-heading--center">
+        <h2 class="sec-heading__ja">イベント参加フォーム</h2>
+      </div>
+
+      <div class="ev-reservation__tel">
+        <p class="ev-reservation__tel-heading">お電話でのお問い合わせ</p>
+        <a href="tel:0120600803" class="ev-reservation__tel-num">0120-600-803</a>
+        <p class="ev-reservation__tel-time">(受付時間 9:00〜18:00 | 定休日 日曜日)</p>
+        <p class="ev-reservation__alert">※イベント前日のご予約は、お電話にてお願いいたします。</p>
+      </div>
+
+      <div class="ev-reservation__form-wrap anim-target">
+        <form class="ev-form">
+
+          <div class="ev-form__group">
+            <label class="ev-form__label">参加希望イベント <span class="ev-form__req">必須</span></label>
+            <input type="text" class="ev-form__input" value="冬の空気が、家族の健康を左右する。自然素材で整える、やさしい住まい。" readonly>
+          </div>
+
+          <div class="ev-form__row ev-form__row--pair">
+            <div class="ev-form__group">
+              <label class="ev-form__label">参加日　第一希望 <span class="ev-form__req">必須</span></label>
+              <input type="date" class="ev-form__input">
+            </div>
+            <div class="ev-form__group ev-form__group--small">
+              <label class="ev-form__label">時間</label>
+              <select class="ev-form__select">
+                <option value="">◯時</option>
+                <option>10:00</option><option>13:00</option>
+                <option>17:00</option><option>19:00</option>
+                <option>要相談</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="ev-form__row ev-form__row--pair">
+            <div class="ev-form__group">
+              <label class="ev-form__label">参加日　第二希望 <span class="ev-form__opt">任意</span></label>
+              <input type="date" class="ev-form__input">
+            </div>
+            <div class="ev-form__group ev-form__group--small">
+              <label class="ev-form__label">時間</label>
+              <select class="ev-form__select">
+                <option value="">◯時</option>
+                <option>10:00</option><option>13:00</option>
+                <option>17:00</option><option>19:00</option>
+                <option>要相談</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="ev-form__row ev-form__row--pair">
+            <div class="ev-form__group">
+              <label class="ev-form__label">参加日　第三希望 <span class="ev-form__opt">任意</span></label>
+              <input type="date" class="ev-form__input">
+            </div>
+            <div class="ev-form__group ev-form__group--small">
+              <label class="ev-form__label">時間</label>
+              <select class="ev-form__select">
+                <option value="">◯時</option>
+                <option>10:00</option><option>13:00</option>
+                <option>17:00</option><option>19:00</option>
+                <option>要相談</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="ev-form__row ev-form__row--half">
+            <div class="ev-form__group">
+              <label class="ev-form__label">お名前 <span class="ev-form__req">必須</span></label>
+              <input type="text" class="ev-form__input" placeholder="山田 太郎">
+            </div>
+            <div class="ev-form__group">
+              <label class="ev-form__label">ふりがな <span class="ev-form__req">必須</span></label>
+              <input type="text" class="ev-form__input" placeholder="やまだ たろう">
+            </div>
+          </div>
+
+          <div class="ev-form__row ev-form__row--half">
+            <div class="ev-form__group">
+              <label class="ev-form__label">電話番号 <span class="ev-form__req">必須</span></label>
+              <input type="tel" class="ev-form__input" placeholder="000-0000-0000">
+            </div>
+            <div class="ev-form__group">
+              <label class="ev-form__label">メールアドレス <span class="ev-form__req">必須</span></label>
+              <input type="email" class="ev-form__input" placeholder="info@example.com">
+            </div>
+          </div>
+
+          <div class="ev-form__row ev-form__row--half">
+            <div class="ev-form__group">
+              <label class="ev-form__label">郵便番号 <span class="ev-form__opt">任意</span></label>
+              <input type="text" class="ev-form__input" placeholder="000-0000">
+            </div>
+            <div class="ev-form__group">
+              <label class="ev-form__label">住所 <span class="ev-form__opt">任意</span></label>
+              <input type="text" class="ev-form__input" placeholder="住所を入力してください">
+            </div>
+          </div>
+
+          <div class="ev-form__group">
+            <label class="ev-form__label">ご要望事項 <span class="ev-form__opt">任意</span></label>
+            <textarea class="ev-form__textarea" rows="5" placeholder="ご質問や特筆すべきご要望がある場合はご入力ください"></textarea>
+          </div>
+
+          <div class="ev-form__group ev-form__group--check">
+            <label class="ev-form__check">
+              <input type="checkbox">
+              <span><a href="#" target="_blank">プライバシーポリシー</a>に同意する</span>
+            </label>
+          </div>
+
+          <div class="ev-form__group ev-form__group--submit">
+            <button type="submit" class="ev-form__submit">送信する</button>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+</main>
+
+
+<!-- ============================================================
+     フッター（プレビュー用ダミー）
+     ============================================================ -->
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__logo">NATURAL WORKS</div>
+    <p class="site-footer__address">
+      〒340-0056 埼玉県草加市新栄3-13-15<br>TEL：0120-600-803
+    </p>
+    <nav class="site-footer__nav">
+      <a href="#">コンセプト</a>
+      <a href="#">施工事例</a>
+      <a href="#">イベント</a>
+      <a href="#">モデルハウス</a>
+      <a href="#">ブログ</a>
+      <a href="#">お問い合わせ</a>
+      <a href="#">資料請求</a>
+    </nav>
+    <p class="site-footer__copy">&copy; NATURAL WORKS. All Rights Reserved.</p>
+  </div>
+</footer>
+
+
+<!-- ============================================================
+     JavaScript
+     ============================================================ -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+  // フェードインアニメーション
+  var animTargets = document.querySelectorAll('.anim-target');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+  animTargets.forEach(function(el) { observer.observe(el); });
+
+  // スムーススクロール
+  document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      var target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        var headerHeight = document.querySelector('.site-header').offsetHeight;
+        var targetPosition = target.offsetTop - headerHeight - 20;
+        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+      }
+    });
+  });
+
+  // スクロールスパイ（目次ハイライト）
+  var scrollSections = document.querySelectorAll('.scroll-section');
+  var tocLinks = document.querySelectorAll('.toc-link');
+
+  window.addEventListener('scroll', function() {
+    var currentId = '';
+    var headerOffset = 150;
+
+    scrollSections.forEach(function(section) {
+      if (window.scrollY >= (section.offsetTop - headerOffset)) {
+        currentId = section.getAttribute('id');
+      }
+    });
+
+    tocLinks.forEach(function(link) {
+      link.classList.remove('is-active');
+      if (link.getAttribute('href') === '#' + currentId) {
+        link.classList.add('is-active');
+      }
+    });
+  });
+
+  window.dispatchEvent(new Event('scroll'));
+
+});
+</script>
+
+</body>
+</html>
