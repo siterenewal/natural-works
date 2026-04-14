@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="design casa - 建築家と暮らしをデザインする家づくり">
+<title>建築家と暮らしをデザインする家づくり | design casa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --nh-color-text: #333333;
+  --nh-color-text-light: #666666;
+  --nh-color-bg: #fafafa;
+  --nh-color-accent: #8b7355;
+  --nh-color-accent-dark: #6b5a45;
+  --nh-color-white: #ffffff;
+  --nh-color-border: #e5e0d8;
+  --nh-color-btn: #333333; /* ボタン用の墨黒 */
+  --nh-color-btn-hover: #555555; /* ボタンホバー用の少し明るい黒 */
+  --nh-font-en: 'Cormorant Garamond', serif;
+  --nh-font-jp: 'Noto Sans JP', sans-serif;
+  --nh-font-jp-serif: 'Noto Serif JP', serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: var(--nh-font-jp-serif);
+  color: var(--nh-color-text);
+  background: var(--nh-color-bg);
+  line-height: 1.8;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+
+/* Header */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--nh-color-border);
+  padding: 20px 60px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.site-header .header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.site-header .logo img {
+  height: 50px;
+  width: auto;
+}
+
+.site-header nav {
+  flex: 1;
+  margin: 0 60px;
+}
+
+.site-header nav ul {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+}
+
+.site-header nav a {
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  color: var(--nh-color-text-light);
+  font-family: var(--nh-font-jp);
+  transition: color 0.3s ease;
+}
+
+.site-header nav a:hover {
+  color: var(--nh-color-btn);
+}
+
+.site-header .header-contact {
+  background: var(--nh-color-btn);
+  color: var(--nh-color-white);
+  padding: 12px 30px;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  border-radius: 4px;
+  font-family: var(--nh-font-jp);
+  transition: all 0.3s ease;
+}
+
+.site-header .header-contact:hover {
+  background: var(--nh-color-btn-hover);
+  transform: translateY(-2px);
+}
+
+/* Main */
+main {
+  margin-top: 90px;
+}
+
+/* Breadcrumb */
+.breadcrumb-wrapper {
+  background: var(--nh-color-bg);
+  padding: 30px 60px;
+  border-bottom: 1px solid var(--nh-color-border);
+}
+
+.breadcrumb {
+  list-style: none;
+  display: flex;
+  gap: 0;
+  max-width: 1400px;
+  margin: 0 auto;
+  font-size: 0.85rem;
+  color: var(--nh-color-text-light);
+}
+
+.breadcrumb li {
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumb li::after {
+  content: '/';
+  margin: 0 12px;
+  color: var(--nh-color-border);
+}
+
+.breadcrumb li:last-child::after {
+  content: '';
+  margin: 0;
+}
+
+.breadcrumb a {
+  color: var(--nh-color-text);
+  transition: opacity 0.3s;
+}
+
+.breadcrumb a:hover {
+  opacity: 0.7;
+}
+
+/* First View */
+.first-view {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 80px;
+}
+
+.first-view__image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.first-view__overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(51, 51, 51, 0.6), rgba(51, 51, 51, 0.3)); /* 墨黒に合わせて少し調整 */
+  z-index: 1;
+}
+
+.first-view__content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+  padding: 0 60px;
+}
+
+.first-view__sub {
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 20px;
+  font-family: var(--nh-font-jp);
+  font-weight: 300;
+}
+
+.first-view__title {
+  font-size: 3rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  line-height: 1.5;
+  font-family: var(--nh-font-jp-serif);
+}
+
+.main-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 60px;
+}
+
+/* ============================================
+   共通セクションタイトル
+   ============================================ */
+.section-intro h1,
+.section-title,
+.benefits-title h2,
+.design-features-title h2,
+.cost-performance-title,
+.specification-header h2,
+.structure-header h2,
+.cta-section h2 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 60px;
+  font-weight: 300;
+  color: var(--nh-color-text); /* ★ すべての見出しを黒（墨黒）に統一しました */
+}
+
+/* 日本語の見出し用 */
+.section-intro h1,
+.section-title,
+.benefits-title h2,
+.cta-section h2 {
+  font-family: var(--nh-font-jp-serif);
+  letter-spacing: 0.05em;
+}
+
+/* 英語の見出し用（DESIGN以降） */
+.design-features-title h2,
+.cost-performance-title,
+.specification-header h2,
+.structure-header h2 {
+  font-family: var(--nh-font-en);
+  letter-spacing: 0.1em;
+  /* ※colorの指定は共通部分にまとめたので削除しています */
+}
+
+
+/* Intro Section */
+.section-intro {
+  text-align: center;
+  padding: 80px 0 100px;
+}
+
+.section-intro p {
+  font-size: 1rem;
+  color: var(--nh-color-text-light);
+  max-width: 800px;
+  margin: 20px auto;
+  line-height: 1.9;
+  font-family: var(--nh-font-jp-serif);
+}
+
+/* Flex Alternating Layout */
+.flex-section {
+  display: flex;
+  gap: 80px;
+  align-items: center;
+  margin-bottom: 120px;
+}
+
+.flex-section__text-wrapper {
+  flex: 1;
+}
+
+.flex-section__image-wrapper {
+  flex: 1;
+}
+
+.flex-section h2 {
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--nh-color-text);
+  line-height: 1.6;
+  font-family: var(--nh-font-jp-serif);
+  margin-bottom: 20px;
+}
+
+.flex-section p {
+  font-size: 1rem;
+  line-height: 1.9;
+  color: var(--nh-color-text-light);
+  font-family: var(--nh-font-jp-serif);
+  margin-bottom: 20px;
+}
+
+.flex-section p:last-of-type {
+  margin-bottom: 0;
+}
+
+.flex-section__image-wrapper img {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.flex-section__image-wrapper:hover img {
+  transform: scale(1.02);
+}
+
+.flex-section:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+/* Benefits Section */
+.benefits-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 100px;
+}
+
+.benefit-item {
+  display: flex;
+  gap: 80px;
+  align-items: center;
+  margin-bottom: 100px;
+}
+
+.benefit-item__text {
+  flex: 1;
+}
+
+.benefit-item__image {
+  flex: 1;
+}
+
+.benefit-item h3 {
+  font-size: 1.6rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--nh-color-text);
+  line-height: 1.6;
+  font-family: var(--nh-font-jp-serif);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.benefit-item h3::before {
+  content: '✓';
+  font-size: 1.8rem;
+  color: var(--nh-color-btn);
+  flex-shrink: 0;
+}
+
+.benefit-item p {
+  font-size: 1rem;
+  line-height: 1.9;
+  color: var(--nh-color-text-light);
+  font-family: var(--nh-font-jp-serif);
+  margin-bottom: 0;
+}
+
+.benefit-item__image img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.benefit-item__image:hover img {
+  transform: scale(1.02);
+}
+
+.benefit-item:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+/* Cards Grid */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin: 80px 0;
+}
+
+.card {
+  background: var(--nh-color-white);
+  padding: 40px 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+}
+
+.card__number {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--nh-color-btn);
+  margin-bottom: 15px;
+  font-family: var(--nh-font-en);
+}
+
+.card__title {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--nh-color-text);
+  margin-bottom: 15px;
+  line-height: 1.5;
+  font-family: var(--nh-font-jp-serif);
+}
+
+.card__title .highlight {
+  color: var(--nh-color-btn);
+}
+
+.card__text {
+  font-size: 0.95rem;
+  color: var(--nh-color-text-light);
+  line-height: 1.8;
+  font-family: var(--nh-font-jp-serif);
+}
+
+/* Gallery */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin: 80px 0;
+}
+
+.gallery-item {
+  background: var(--nh-color-white);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  display: block;
+}
+
+.gallery-item:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+}
+
+.gallery-item__image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery-item__content {
+  padding: 25px;
+}
+
+.gallery-item__title {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--nh-color-text);
+  margin-bottom: 10px;
+  line-height: 1.5;
+  font-family: var(--nh-font-jp-serif);
+}
+
+.gallery-item__location {
+  font-size: 0.85rem;
+  color: var(--nh-color-text-light);
+  font-family: var(--nh-font-jp);
+}
+
+/* Buttons */
+.button {
+  display: inline-block;
+  padding: 16px 50px;
+  background: var(--nh-color-btn); /* 墨黒に変更 */
+  color: var(--nh-color-white);
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  font-family: var(--nh-font-jp);
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  margin-top: 20px;
+}
+
+.button:hover {
+  background: var(--nh-color-btn-hover);
+  transform: translateY(-2px);
+}
+
+.button--secondary {
+  background: transparent;
+  border: 1px solid var(--nh-color-btn); /* 墨黒に変更 */
+  color: var(--nh-color-btn);
+}
+
+.button--secondary:hover {
+  background: var(--nh-color-btn);
+  color: var(--nh-color-white);
+}
+
+/* CTA Section */
+.cta-section {
+  text-align: center;
+  padding: 80px 60px;
+  background: var(--nh-color-white);
+  border-radius: 8px;
+  margin: 100px 0 80px;
+}
+
+.cta-section p {
+  font-size: 1rem;
+  color: var(--nh-color-text-light);
+  margin-bottom: 40px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: var(--nh-font-jp-serif);
+}
+
+/* Design Features Section */
+.design-features-section {
+  margin-top: 120px;
+  margin-bottom: 120px;
+}
+
+.design-feature-item {
+  display: flex;
+  gap: 80px;
+  align-items: center;
+  margin-bottom: 100px;
+}
+
+.design-feature-item--reverse {
+  flex-direction: row-reverse;
+}
+
+.design-feature-item__image {
+  flex: 0 0 45%;
+  overflow: hidden;
+}
+
+.design-feature-item__image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.design-feature-item:hover .design-feature-item__image img {
+  transform: scale(1.02);
+}
+
+.design-feature-item__text {
+  flex: 1;
+}
+
+.design-feature-item h3 {
+  font-size: 1.6rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--nh-color-text);
+  line-height: 1.6;
+  font-family: var(--nh-font-jp-serif);
+  margin-bottom: 20px;
+}
+
+.design-feature-item p {
+  font-size: 1rem;
+  line-height: 1.9;
+  color: var(--nh-color-text-light);
+  font-family: var(--nh-font-jp-serif);
+}
+
+/* Cost Performance Section */
+.cost-performance-section {
+  margin-top: 120px;
+  margin-bottom: 120px;
+  background: var(--nh-color-white);
+  padding: 80px 60px;
+  border-radius: 8px;
+}
+
+.cost-performance-item {
+  display: flex;
+  gap: 80px;
+  align-items: center;
+}
+
+.cost-performance-item__text {
+  flex: 1;
+}
+
+.cost-performance-item__text h3 {
+  font-size: 1.6rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--nh-color-text);
+  line-height: 1.6;
+  font-family: var(--nh-font-jp-serif);
+  margin-bottom: 20px;
+}
+
+.cost-performance-item__text p {
+  font-size: 1rem;
+  line-height: 1.9;
+  color: var(--nh-color-text-light);
+  font-family: var(--nh-font-jp-serif);
+  margin-bottom: 20px;
+}
+
+.cost-performance-item__text p:last-child {
+  margin-bottom: 0;
+}
+
+.cost-performance-item__text strong {
+  color: var(--nh-color-btn);
+}
+
+.cost-performance-item__image {
+  flex: 0 0 45%;
+  overflow: hidden;
+}
+
+.cost-performance-item__image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.cost-performance-item__image:hover img {
+  transform: scale(1.02);
+}
+
+/* Specification Section */
+.specification-section {
+  margin-top: 120px;
+  margin-bottom: 120px;
+}
+
+.specification-header p,
+.structure-header p {
+  font-size: 1rem;
+  color: var(--nh-color-text-light);
+  font-family: var(--nh-font-jp);
+  text-align: center;
+  margin-top: -50px; /* 見出しの下マージンを相殺 */
+  margin-bottom: 60px;
+}
+
+.specification-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.specification-row + .specification-row {
+  margin-top: 32px;
+}
+
+.specification-item {
+  background: var(--nh-color-white);
+  overflow: hidden;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.specification-item:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+}
+
+.specification-item__image {
+  overflow: hidden;
+  height: 220px;
+  flex-shrink: 0;
+}
+
+.specification-item__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.specification-item:hover .specification-item__image img {
+  transform: scale(1.05);
+}
+
+.specification-item__content {
+  padding: 28px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.specification-item h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--nh-color-accent);
+  font-family: var(--nh-font-en);
+  margin-bottom: 5px;
+}
+
+.specification-item__subtitle {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--nh-color-text);
+  margin-bottom: 15px;
+  display: block;
+  font-family: var(--nh-font-jp-serif);
+}
+
+.specification-item__text {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--nh-color-text-light);
+  font-family: var(--nh-font-jp-serif);
+  margin: 0;
+}
+
+/* Structure Section */
+.structure-section {
+  margin-top: 120px;
+  margin-bottom: 120px;
+  padding: 80px 60px;
+}
+
+/* Footer */
+.site-footer {
+  background: var(--nh-color-text);
+  color: var(--nh-color-white);
+  padding: 60px 40px 0;
+}
+
+.site-footer .footer-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 60px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 40px;
+}
+
+.site-footer .footer-logo {
+  font-family: var(--nh-font-en);
+  font-size: 1.3rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 15px;
+  font-weight: 400;
+}
+
+.site-footer .footer-address {
+  font-size: 0.85rem;
+  line-height: 1.8;
+  opacity: 0.8;
+  font-family: var(--nh-font-jp);
+}
+
+.site-footer .footer-nav ul {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  flex-wrap: wrap;
+  font-family: var(--nh-font-jp);
+}
+
+.site-footer .footer-nav a {
+  font-size: 0.85rem;
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+
+.site-footer .footer-nav a:hover {
+  opacity: 1;
+}
+
+.site-footer .footer-copy {
+  text-align: center;
+  font-size: 0.75rem;
+  opacity: 0.6;
+  font-family: var(--nh-font-jp);
+  padding: 30px 0;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .site-header { padding: 15px 40px; }
+  .site-header nav { margin: 0 30px; }
+  .site-header nav ul { gap: 20px; }
+  .main-container { padding: 0 40px; }
+  .first-view { height: 50vh; }
+  .section-intro h1, .section-title, .benefits-title h2, .design-features-title h2, .cost-performance-title, .specification-header h2, .structure-header h2 { font-size: 1.8rem; margin-bottom: 40px; }
+  .flex-section { gap: 40px; }
+  .benefit-item { gap: 40px; }
+  .card-grid, .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .specification-row { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .site-footer .footer-inner { flex-direction: column; gap: 40px; }
+}
+
+@media (max-width: 768px) {
+  .site-header { padding: 12px 20px; }
+  .site-header nav, .site-header .header-contact { display: none; }
+  .first-view { height: 40vh; margin-bottom: 60px; }
+  .main-container { padding: 0 20px; }
+  .section-intro h1, .section-title, .benefits-title h2, .design-features-title h2, .cost-performance-title, .specification-header h2, .structure-header h2 { font-size: 1.5rem; margin-bottom: 30px; }
+  .flex-section, .flex-section:nth-child(even), .benefit-item, .benefit-item:nth-child(even) { flex-direction: column; gap: 30px; margin-bottom: 80px; }
+  .card-grid, .gallery-grid, .specification-row { grid-template-columns: 1fr; }
+  .site-footer { padding: 40px 20px 0; }
+  .site-footer .footer-inner { gap: 30px; padding-bottom: 30px; margin-bottom: 30px; }
+  .site-footer .footer-nav ul { flex-direction: column; gap: 10px; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="header-inner">
+        <a href="/" class="logo">
+            <img src="img/logo.webp" alt="Natural Works">
+        </a>
+        <nav>
+            <ul>
+                <li><a href="/concept/">コンセプト</a></li>
+                <li><a href="/works/">施工事例</a></li>
+                <li><a href="/model-house/">モデルハウス</a></li>
+                <li><a href="/event/">イベント</a></li>
+            </ul>
+        </nav>
+        <a href="/contact/" class="header-contact">お問い合わせ</a>
+    </div>
+</header>
+
+<main>
+  <nav aria-label="breadcrumb" class="breadcrumb-wrapper">
+    <ol class="breadcrumb">
+      <li><a href="/">Home</a></li>
+      <li><span>design casa</span></li>
+    </ol>
+  </nav>
+
+  <section class="first-view">
+    <img src="https://via.placeholder.com/1400x600?text=Beautiful+House+Design" alt="建築家と暮らしをデザインする家づくり" class="first-view__image">
+    <div class="first-view__overlay"></div>
+    <div class="first-view__content">
+      <div class="first-view__sub">design casa</div>
+      <h1 class="first-view__title">建築家と暮らしを<br>デザインする家づくり</h1>
+    </div>
+  </section>
+
+  <div class="main-container">
+
+    <section class="section-intro">
+      <h1>design casaとは<br>「理想の暮らしを実現する家づくり」</h1>
+      <p>3者（オーナー・建築家・工務店）のチームで創る、一生愛せるマイホーム。<br>
+      design casaでは、デザイン性と機能性を高水準で両立させることが、理想の家づくりの鍵だと考えています。</p>
+    </section>
+
+    <section class="flex-section">
+      <div class="flex-section__text-wrapper">
+        <h2>あなたの理想の暮らしを、<br>建築家が理解し、工務店が実現する</h2>
+        <p>3者のチームで創る、一生愛せるマイホーム。design casaでは、デザイン性と機能性を高水準で両立させることが、理想の家づくりの鍵だと考えています。</p>
+        <p>安さや見た目だけを追求すると、光熱費がかさんだり、安全性が低くなったり、暮らしにくい家になりがちです。だからこそdesign casaでは、デザイン、性能、コストのバランスを重視し、後悔しない快適な家づくりを目指しています。</p>
+      </div>
+      <div class="flex-section__image-wrapper">
+        <img src="https://via.placeholder.com/500x400?text=Design+Concept+1" alt="デザインコンセプト">
+      </div>
+    </section>
+
+    <section style="margin-top: 100px;">
+      <h2 class="section-title">design casaの3つの強み</h2>
+      <div class="card-grid">
+        <div class="card">
+          <div class="card__number">01</div>
+          <h3 class="card__title">あなた以上に<br><span class="highlight">あなたを理解する建築家</span></h3>
+          <p class="card__text">プロのヒアリングであなたの言葉の奥にある要望まで汲み取り、予算や工期を考慮した最適なデザインを提案します。</p>
+        </div>
+        <div class="card">
+          <div class="card__number">02</div>
+          <h3 class="card__title">土地とお金で<br><span class="highlight">失敗させない工務店</span></h3>
+          <p class="card__text">土地選びから資金計画、完工後のメンテナンスまで、一生涯にわたってサポートする信頼できるパートナーです。</p>
+        </div>
+        <div class="card">
+          <div class="card__number">03</div>
+          <h3 class="card__title"><span class="highlight">3者のチーム</span><br>で楽しむ家づくり</h3>
+          <p class="card__text">オーナー、建築家、工務店が一緒になって家づくりを進めることで、プロセスそのものが楽しい体験になります。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="benefits-container">
+      <div class="benefits-title">
+        <h2>購入することで得られる効果</h2>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-item__text">
+          <h3>あなただけの「理想の暮らし」が形になる</h3>
+          <p>「休日はどう過ごしたい？」「どんな家事スタイルが心地いい？」といった、あなたのライフスタイルそのものがデザインの発想の原点となり、一生暮らしたくなる家が完成します。</p>
+        </div>
+        <div class="benefit-item__image">
+          <img src="https://via.placeholder.com/500x600?text=Ideal+Lifestyle" alt="理想の暮らし">
+        </div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-item__text">
+          <h3>コストの不安なく、憧れのデザイナーズ住宅に住める</h3>
+          <p>打ち合わせを3回に効率化するなどの工夫で、高いと思われがちな設計料を大幅にカット（2500万円の家の場合、設計料はわずか4％）。月々2000円程度の負担で、無理なく美しい家に住むことができます。</p>
+        </div>
+        <div class="benefit-item__image">
+          <img src="https://via.placeholder.com/500x600?text=Designers+Home" alt="デザイナーズ住宅">
+        </div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-item__text">
+          <h3>一生涯、安心して暮らせるパートナーが手に入る</h3>
+          <p>家づくりの最中はもちろん、子どもの独立後のリフォームや定期的なメンテナンスなど、家に関する相談窓口としてずっと頼りにできる地元のサポーター（工務店）を得られます。</p>
+        </div>
+        <div class="benefit-item__image">
+          <img src="https://via.placeholder.com/500x600?text=Lifetime+Support" alt="一生涯のパートナー">
+        </div>
+      </div>
+    </section>
+
+    <section class="flex-section" style="margin-top: 100px;">
+      <div class="flex-section__text-wrapper">
+        <h2>理想を実現する<br>3つの要素が協働</h2>
+        <p>design casaでは高いレベルで、デザイン、性能、コストのバランスが取れた理想的な家を実現します。そのため工務店や職人、建築家といったプロフェッショナルが集結し、それぞれの持ち場でお客様との家づくりに全力を尽くせるしくみをご用意しています。</p>
+        <p>一人で悩まず、プロとともに最高の家づくりを実現してください。各専門家が連携し、あなたの理想を形にするための最適なソリューションを提供します。</p>
+      </div>
+      <div class="flex-section__image-wrapper">
+        <img src="https://via.placeholder.com/500x400?text=System" alt="システム">
+      </div>
+    </section>
+
+    <section style="margin-top: 100px;">
+      <h2 class="section-title">理想の暮らしを叶える<br>design casaの家</h2>
+      <div class="gallery-grid">
+        <a href="#" class="gallery-item">
+          <img src="https://via.placeholder.com/400x300?text=Project+01" alt="施工事例1" class="gallery-item__image">
+          <div class="gallery-item__content">
+            <h3 class="gallery-item__title">豊かで美しい空間が繋がる家</h3>
+            <p class="gallery-item__location">東京都渋谷区</p>
+          </div>
+        </a>
+        <a href="#" class="gallery-item">
+          <img src="https://via.placeholder.com/400x300?text=Project+02" alt="施工事例2" class="gallery-item__image">
+          <div class="gallery-item__content">
+            <h3 class="gallery-item__title">光と風を取り込む設計</h3>
+            <p class="gallery-item__location">東京都新宿区</p>
+          </div>
+        </a>
+        <a href="#" class="gallery-item">
+          <img src="https://via.placeholder.com/400x300?text=Project+03" alt="施工事例3" class="gallery-item__image">
+          <div class="gallery-item__content">
+            <h3 class="gallery-item__title">家族との距離が心地よい家</h3>
+            <p class="gallery-item__location">神奈川県横浜市</p>
+          </div>
+        </a>
+      </div>
+      <div style="text-align: center; margin-top: 60px;">
+        <a href="/gallery/" class="button button--secondary">他の施工事例を見る</a>
+      </div>
+    </section>
+
+    <section class="design-features-section">
+      <div class="design-features-title">
+        <h2>DESIGN</h2>
+      </div>
+      <div class="design-feature-item">
+        <div class="design-feature-item__image">
+          <img src="https://www.natural-space.jp/wp-content/themes/fast-mirai/img/architect/sec-3-1.jpg" alt="design casaのデザイン">
+        </div>
+        <div class="design-feature-item__text">
+          <h3>「design casa」の最大の魅力は建築家によるデザイン</h3>
+          <p>建築家の「design casa」は、自身のアトリエを各地で運営するほどの実力とセンスの持ち主です。彼らは何百棟もの家のデザイン経験を持ち、1棟1棟の家のコンセプトはさまざまですが、美しさと機能性を兼ね備えたデザインで、暮らしを整えることを目指しています。</p>
+        </div>
+      </div>
+      <div class="design-feature-item design-feature-item--reverse">
+        <div class="design-feature-item__image">
+          <img src="https://www.natural-space.jp/wp-content/themes/fast-mirai/img/architect/sec-3-2.jpg" alt="建築家とのデザイン談議">
+        </div>
+        <div class="design-feature-item__text">
+          <h3>「design casa」ならば建築家と顔を合わせてデザイン談議ができる</h3>
+          <p>「design casa」の建築家は、自身のアトリエを各地で運営し、優れた実力とセンスを持っています。彼らは何百棟もの家のデザイン経験を持っており、それぞれの家のコンセプトは異なりますが、美しさと機能性を兼ね備え、暮らしを整えるデザインを追求しています。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cost-performance-section">
+      <h2 class="cost-performance-title">COST PERFORMANCE</h2>
+      <div class="cost-performance-item">
+        <div class="cost-performance-item__text">
+          <h3>自然体で暮らす、心地よい家</h3>
+          <p><strong>「design casa」では効率化により設計料を削減</strong><br>
+          一般的に、建築費の10〜15％とされる建築家の設計料。しかし、「design casa」で注文住宅を建てる場合、建築家とのミーティングを効率的に行うことで、コストを賢く削減しています。</p>
+          <p><strong>「design casa」は全国で部材を共有し、建築費をコストダウン</strong><br>
+          全国に加盟工務店がある「design casa」では、そのネットワークを活用して、家づくりに必要な部材を大量に仕入れたり共有したりしています。</p>
+        </div>
+        <div class="cost-performance-item__image">
+          <img src="https://www.natural-space.jp/wp-content/themes/fast-mirai/img/architect/sec-4-1.jpg" alt="コストパフォーマンス">
+        </div>
+      </div>
+    </section>
+
+    <section class="specification-section">
+      <div class="specification-header">
+        <h2>SPECIFICATION</h2>
+        <p>仕様</p>
+      </div>
+      <div class="specification-row">
+        <div class="specification-item">
+          <div class="specification-item__image">
+            <img src="https://www.natural-space.jp/wp-content/themes/fast-mirai/img/architect/specification-1.jpg" alt="外壁 / 塗り壁" loading="lazy">
+          </div>
+          <div class="specification-item__content">
+            <h4>OUTER WALL</h4>
+            <p class="specification-item__subtitle">外壁 / 塗り壁</p>
+            <p class="specification-item__text">美しさと耐久性に優れた塗り壁を使用。手塗りで仕上がった風合いが美しい外壁は年月が経つほどに味わいが増します。</p>
+          </div>
+        </div>
+        <div class="specification-item">
+          <div class="specification-item__image">
+            <img src="https://www.natural-space.jp/wp-content/themes/fast-mirai/img/architect/specification-2.jpg" alt="外壁 / ガルバリウム" loading="lazy">
+          </div>
+          <div class="specification-item__content">
+            <h4>OUTER WALL</h4>
+            <p class="specification-item__subtitle">外壁 / ガルバリウム</p>
+            <p class="specification-item__text">耐久性、耐食性にも優れているガルバリウム。すっきりとモダンな外観の印象になりオリジナリティのあるファサードデザインを実現します。</p>
+          </div>
+        </div>
+        <div class="specification-item">
+          <div class="specification-item__image">
+            <img src="https://www.natural-space.jp/wp-content/themes/fast-mirai/img/architect/specification-3.jpg" alt="アクセントウォール" loading="lazy">
+          </div>
+          <div class="specification-item__content">
+            <h4>ACCENT WALL</h4>
+            <p class="specification-item__subtitle">アクセントウォール</p>
+            <p class="specification-item__text">美しさと耐久性に優れた塗り壁を使用。手塗りで仕上がった風合いが美しい外壁は年月が経つほどに味わいが増します。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="structure-section">
+      <div class="structure-header">
+        <h2>STRUCTURE</h2>
+        <p>構造体</p>
+      </div>
+      <div class="specification-row">
+        <div class="specification-item">
+          <div class="specification-item__image">
+            <img src="https://www.natural-space.jp/wp-content/themes/fast-mirai/img/architect/structure-1.jpg" alt="基礎" loading="lazy">
+          </div>
+          <div class="specification-item__content">
+            <h4>FOUNDATION</h4>
+            <p class="specification-item__subtitle">基礎</p>
+            <p class="specification-item__text">地盤調査を行い、基礎全体に十分な鉄筋を配した頑丈基礎。しっかりと組み上げた鉄筋とコンクリートでつくる強固で安心なベタ基礎を採用しています。</p>
+          </div>
+        </div>
+        <div class="specification-item">
+          <div class="specification-item__image">
+            <img src="https://www.natural-space.jp/wp-content/themes/fast-mirai/img/architect/structure-2.jpg" alt="土台" loading="lazy">
+          </div>
+          <div class="specification-item__content">
+            <h4>GROUNDSILL</h4>
+            <p class="specification-item__subtitle">土台</p>
+            <p class="specification-item__text">天然材で組み上げた土台は、防虫性と抗菌性が非常に高くシロアリに強いヒノキを使用しています。</p>
+          </div>
+        </div>
+        <div class="specification-item">
+          <div class="specification-item__image">
+            <img src="https://www.natural-space.jp/wp-content/themes/fast-mirai/img/architect/structure-3.jpg" alt="耐力壁" loading="lazy">
+          </div>
+          <div class="specification-item__content">
+            <h4>BEARING WALL</h4>
+            <p class="specification-item__subtitle">耐力壁</p>
+            <p class="specification-item__text">家の壁全体を一体化させる、ゆがみに強いパネル工法を採用。耐火にも優れたパネルを使用することで、耐震性と耐火性に優れた建物になります。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <h2>理想の家づくりを、一緒に始めませんか？</h2>
+      <p>建築家とのデザイン対話、性能、コストのすべてにおいて、最高水準の家づくりをお提供します。無料カタログのご請求、ご相談を随時受け付けています。</p>
+      <a href="/request/" class="button">無料カタログ請求・相談する</a>
+    </section>
+
+  </div>
+
+  <nav aria-label="breadcrumb" class="breadcrumb-wrapper" style="margin-top: 60px;">
+    <ol class="breadcrumb">
+      <li><a href="/">Home</a></li>
+      <li><span>design casa</span></li>
+    </ol>
+  </nav>
+</main>
+
+<footer class="site-footer">
+    <div class="footer-inner">
+        <div class="footer-info">
+            <a href="/" class="footer-logo">
+                NATURAL WORKS
+            </a>
+            <address class="footer-address">
+                〒340-0056 埼玉県草加市新栄3-13-15<br>
+                TEL：0120-600-803
+            </address>
+        </div>
+        <nav class="footer-nav">
+            <ul>
+                <li><a href="/concept/">コンセプト</a></li>
+                <li><a href="/works/">施工事例</a></li>
+                <li><a href="/event/">イベント</a></li>
+                <li><a href="/contact/">お問い合わせ</a></li>
+            </ul>
+        </nav>
+    </div>
+    <p class="footer-copy">© 2026 Natural Works. All Rights Reserved.</p>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const sections = document.querySelectorAll('.flex-section, .benefit-item, .card, .gallery-item');
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(section => {
+      section.style.opacity = '0';
+      section.style.transform = 'translateY(20px)';
+      section.style.transition = 'all 0.6s ease';
+      observer.observe(section);
+    });
+  });
+</script>
+
+</body>
+</html>
